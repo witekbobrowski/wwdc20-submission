@@ -9,33 +9,42 @@
 import SwiftUI
 
 struct ExercisesView: View {
-    
+
     var viewModel: ExercisesViewModel
     
     var body: some View {
         VStack(alignment: .center, spacing: 24) {
             HStack(alignment: .center, spacing: 24) {
-                MenuCardView(
-                    viewModel: self.viewModel.emotions,
-                    accentColor: Style.Color.purple
-                ).frame(minWidth: 0, maxWidth: .infinity)
-                MenuCardView(
-                    viewModel: self.viewModel.drawing,
-                    accentColor: Style.Color.green
-                ).frame(minWidth: 0, maxWidth: .infinity)
+                card(for: .emotions)
+                card(for: .drawing)
             }
             HStack(alignment: .center, spacing: 24) {
-                MenuCardView(
-                    viewModel: viewModel.affirmations,
-                    accentColor: Style.Color.red
-                ).frame(minWidth: 0, maxWidth: .infinity)
-                MenuCardView(
-                    viewModel: viewModel.gratitude,
-                    accentColor: Style.Color.blue
-                ).frame(minWidth: 0, maxWidth: .infinity)
+                card(for: .affirmations)
+                card(for: .gratitude)
             }
         }.frame(minWidth: 0, maxWidth: .infinity)
     }
+    
+    private func card(for exercise: Exercise) -> some View {
+        MenuCardView(
+            viewModel: viewModel.card(for: exercise),
+            accentColor: accentColor(for: exercise)
+        ).frame(minWidth: 0, maxWidth: .infinity)
+    }
+
+    private func accentColor(for exercise: Exercise) -> Color {
+        switch exercise {
+        case .emotions:
+            return Style.Color.purple
+        case .drawing:
+            return Style.Color.green
+        case .affirmations:
+            return Style.Color.red
+        case .gratitude:
+            return Style.Color.blue
+        }
+    }
+
 }
 
 struct ExercisesView_Previews: PreviewProvider {

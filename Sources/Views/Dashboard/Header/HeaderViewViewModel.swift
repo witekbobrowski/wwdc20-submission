@@ -14,7 +14,7 @@ final class HeaderViewViewModel {
     
     var title: String { "Hello, \(user.name)!" }
     
-    init(user: User) {
+    init(user: User = .current) {
         self.user = user
     }
 

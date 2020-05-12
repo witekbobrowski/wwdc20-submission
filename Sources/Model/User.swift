@@ -11,3 +11,9 @@ import Foundation
 struct User {
     let name: String
 }
+
+extension User {
+    static var current: User {
+        User(name: "Witek")
+    }
+}

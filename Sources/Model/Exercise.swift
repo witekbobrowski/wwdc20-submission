@@ -15,6 +15,10 @@ enum Exercise: String {
     case gratitude
 }
 
+extension Exercise: Identifiable {
+    var id: String { rawValue }
+}
+
 extension Exercise {
     var title: String {
         switch self {

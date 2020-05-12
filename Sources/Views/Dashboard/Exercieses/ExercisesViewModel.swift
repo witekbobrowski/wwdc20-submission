@@ -6,13 +6,31 @@
 //  Copyright © 2020 Witek Bobrowski. All rights reserved.
 //
 
-import Foundation
+import SwiftUI
 
 final class ExercisesViewModel {
     
-    var emotions: MenuCardViewModel { MenuCardViewModel(exercise: .emotions) }
-    var drawing: MenuCardViewModel { MenuCardViewModel(exercise: .drawing) }
-    var affirmations: MenuCardViewModel { MenuCardViewModel(exercise: .affirmations) }
-    var gratitude: MenuCardViewModel { MenuCardViewModel(exercise: .gratitude) }
+    private let user: User
+    @Binding var selected: Exercise?
+    
+    var emotions: EmotionsViewModel { EmotionsViewModel(user: user) }
+    
+    init(
+        user: User = .current,
+        selected: Binding<Exercise?> = .constant(nil)
+    ) {
+        self.user = user
+        self._selected = selected
+    }
+    
+    func card(for exercise: Exercise) -> MenuCardViewModel {
+        MenuCardViewModel(
+            exercise: exercise,
+            isSelected: Binding(
+                get: { [weak self] in self?.selected == exercise },
+                set: { [weak self] in self?.selected = $0 ? exercise : nil }
+            )
+        )
+    }
     
 }

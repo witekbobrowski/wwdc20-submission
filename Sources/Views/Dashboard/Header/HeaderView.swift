@@ -23,6 +23,6 @@ struct HeaderView: View  {
 
 struct HeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        HeaderView(viewModel: HeaderViewViewModel(user: User(name: "Witek")))
+        HeaderView(viewModel: HeaderViewViewModel())
     }
 }
