@@ -23,10 +23,12 @@ struct EmotionsPickerView: View {
     
     private func scale(for index: Int) -> some View {
         GeometryReader { geometry in
-            HStack {
+            HStack(spacing: 0) {
                 EmotionScaleView(viewModel: self.viewModel.scale(forItemAt: index))
+                    .frame(
+                        height: self.height(for: index, geometry: geometry)
+                    )
                     .frame(minWidth: 0, maxWidth: .infinity)
-                    .frame(height: self.height(for: index, geometry: geometry))
                 Text("")
                     .frame(minWidth: 0, maxWidth: .infinity)
             }
@@ -35,11 +37,11 @@ struct EmotionsPickerView: View {
     
     private func angle(for index: Int) -> Angle {
         let step = 360 / Double(viewModel.items.count)
-        return .degrees(Double(index) * step + step / 2)
+        return .degrees(Double(index) * step)
     }
     
     private func height(for index: Int, geometry: GeometryProxy) -> CGFloat {
-        (geometry.size.width * .pi) / CGFloat(viewModel.items.count) - 12
+        (geometry.size.width * .pi) / CGFloat(viewModel.items.count)
     }
     
 }

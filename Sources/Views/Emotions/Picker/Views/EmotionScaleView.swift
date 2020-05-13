@@ -9,6 +9,9 @@
 import SwiftUI
 
 struct EmotionScaleView: View {
+
+    private let titleWidth: CGFloat = 18
+    private let spacing: CGFloat = 4
     
     var viewModel: EmotionScaleViewModel
     
@@ -19,24 +22,37 @@ struct EmotionScaleView: View {
                     .font(Style.Font.font(size: 22))
                     .bold()
                     .rotationEffect(.degrees(-90), anchor: .center)
-                .frame(width: 256)
-            }.frame(width: 18)
-            HStack(alignment: .center, spacing: 12) {
-                RoundedRectangle(cornerRadius: 12)
-                    .foregroundColor(.gray)
-                RoundedRectangle(cornerRadius: 12)
-                    .foregroundColor(.gray)
-                RoundedRectangle(cornerRadius: 12)
-                    .foregroundColor(.gray)
-                RoundedRectangle(cornerRadius: 12)
-                    .foregroundColor(.gray)
-                RoundedRectangle(cornerRadius: 12)
-                    .foregroundColor(.gray)
-                RoundedRectangle(cornerRadius: 12)
-                    .foregroundColor(.gray)
+                    .frame(width: 256)
+            }.frame(width: titleWidth)
+            GeometryReader { geometry in
+                HStack(alignment: .center, spacing: self.spacing) {
+                    ForEach(self.viewModel.scale) { index in
+                        self.trapezoid(for: index, in: geometry)
+                    }
+                }
             }
         }
     }
+    
+    private func trapezoid(for index: Int, in geometry: GeometryProxy) -> some View {
+        let count = CGFloat(viewModel.scale.count)
+        let size = actualSize(geometry.size)
+        let offset = (spacing * (count - 1) / count)
+        let width = ((size.width) / count) - offset
+        let heightStep = (size.height / count)
+        let height = size.height - (CGFloat(index) * heightStep)
+        return Trapezoid(insetAmount: heightStep / 2)
+            .frame(width: width, height: height)
+            .foregroundColor(.gray)
+    }
+    
+    private func actualSize(_ size: CGSize) -> CGSize {
+        CGSize(
+            width: size.width - titleWidth,
+            height: size.height - ((size.width / size.height) * 18 / 2)
+        )
+    }
+    
 }
 
 

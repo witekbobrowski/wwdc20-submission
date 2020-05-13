@@ -12,6 +12,8 @@ final class EmotionScaleViewModel {
     
     private let emotion: Emotion
     
+    let scale: Range<Int> = 0..<6
+    
     var title: String { emotion.rawValue.capitalized }
     
     init(emotion: Emotion) {

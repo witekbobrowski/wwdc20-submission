@@ -19,9 +19,7 @@ struct RootView: View {
     var body: some View {
         Group {
             if router.presented == .emotions {
-                dashboard
-                    .overlay(EmotionsView(viewModel: EmotionsViewModel()))
-                    .animation(.easeInOut)
+                EmotionsView(viewModel: EmotionsViewModel())
             } else {
                 dashboard
             }
