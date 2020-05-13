@@ -8,27 +8,22 @@
 
 import SwiftUI
 
-final class DashboardViewModel: ObservableObject {
+final class DashboardViewModel {
     
     private let user: User
+    let router: Router
     
-    @Binding var presenting: Exercise?
-    
-    var header: HeaderViewViewModel {
-        HeaderViewViewModel(user: user)
-    }
+    var title: String { "Hello, \(user.name)!" }
     var exercises: ExercisesViewModel {
-        ExercisesViewModel(user: user, selected: $presenting)
+        ExercisesViewModel(user: user, router: router)
     }
     var emotions: EmotionsViewModel {
         EmotionsViewModel(user: user)
     }
     
-    init(
-        user: User = .current, presenting: Binding<Exercise?> = .constant(nil)
-    ) {
+    init(user: User = .current, router: Router = .shared) {
         self.user = user
-        self._presenting = presenting
+        self.router = router
     }
     
 }

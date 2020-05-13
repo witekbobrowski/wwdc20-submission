@@ -10,11 +10,11 @@ import SwiftUI
 
 struct DashboardView: View  {
     
-    @ObservedObject var viewModel: DashboardViewModel
+    var viewModel: DashboardViewModel
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            HeaderView(viewModel: viewModel.header)
+            HeaderView(title: self.viewModel.title)
             GeometryReader { geometry in
                 ScrollView(.vertical, showsIndicators: false) {
                     Spacer(minLength: 64)
@@ -24,12 +24,12 @@ struct DashboardView: View  {
                 .frame(width: geometry.size.width, alignment: .center)
             }
         }
+        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
         .padding(EdgeInsets(top: 64, leading: 32, bottom: 64, trailing: 32))
-        .background(Color(white: 0.98))
-        .sheet(item: viewModel.$presenting, content: destination)
+        .background(Style.Color.background)
     }
     
-    private func destination(for exercise: Exercise) -> some View {
+    private func destination(for exercise: Exercise?) -> some View {
         return EmotionsView(viewModel: EmotionsViewModel())
     }
     

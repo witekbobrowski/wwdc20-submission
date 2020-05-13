@@ -12,6 +12,8 @@ final class EmotionsViewModel {
     
     private let user: User
     
+    var title: String { "Emotions" }
+    
     init(user: User = User(name: "Witek")) {
         self.user = user
     }

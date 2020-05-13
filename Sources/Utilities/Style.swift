@@ -10,6 +10,8 @@ import SwiftUI
 
 enum Style {
     enum Color {
+        static let background = SwiftUI.Color(white: 0.98)
+        
         static let purple = SwiftUI.Color(red: 230/255, green: 207/255, blue: 230/255)
         static let green = SwiftUI.Color(red: 162/255, green: 195/255, blue: 182/255)
         static let red = SwiftUI.Color(red: 239/255, green: 185/255, blue: 164/255)

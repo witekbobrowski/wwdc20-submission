@@ -10,19 +10,30 @@ import SwiftUI
 
 struct HeaderView: View  {
     
-    var viewModel: HeaderViewViewModel
+    @State var title: String
     
     var body: some View {
-        Text(viewModel.title)
-            .font(Style.Font.font(size: 64))
-            .kerning(0.5)
-            .multilineTextAlignment(.leading)
+        HStack {
+            Text(title)
+                .font(Style.Font.font(size: 48))
+                .kerning(0.5)
+                .multilineTextAlignment(.leading)
+            Spacer()
+            if Router.shared.presented != nil {
+                Button(action: { Router.shared.presented = nil }) {
+                    Image(systemName: "xmark")
+                        .resizable()
+                        .foregroundColor(.black)
+                        .frame(width: 24, height: 24, alignment: .center)
+                }
+            }
+        }.frame(minWidth: 0, maxWidth: .infinity)
     }
     
 }
 
 struct HeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        HeaderView(viewModel: HeaderViewViewModel())
+        HeaderView(title: "Hello :)")
     }
 }

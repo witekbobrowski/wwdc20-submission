@@ -11,20 +11,19 @@ import SwiftUI
 final class MenuCardViewModel {
 
     private let exercise: Exercise
-    @Binding private var isSelected: Bool
+    private let router: Router
     
     var icon: String { exercise.icon }
     var title: String { exercise.title }
     var subtitle: String { exercise.shortDescription }
     
-    init(exercise: Exercise, isSelected: Binding<Bool> = .constant(false)) {
+    init(exercise: Exercise = .emotions, router: Router = .shared) {
         self.exercise = exercise
-        self._isSelected = isSelected
-    }
-    
-    func action() {
-        print("did tap \(exercise.rawValue) card")
-        isSelected = true
+        self.router = router
     }
 
+    func action() {
+        router.presented = exercise
+    }
+    
 }

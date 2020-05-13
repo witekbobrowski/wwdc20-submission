@@ -14,7 +14,7 @@ struct MenuCardView: View  {
     var accentColor: Color
     
     var body: some View {
-        Button(action: viewModel.action) {
+        Button(action: { self.viewModel.action() }) {
             VStack(alignment: .center, spacing: 8) {
                 Text(viewModel.icon)
                     .font(.system(size: 80))

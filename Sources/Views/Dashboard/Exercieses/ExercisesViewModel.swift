@@ -11,26 +11,17 @@ import SwiftUI
 final class ExercisesViewModel {
     
     private let user: User
-    @Binding var selected: Exercise?
+    private let router: Router
     
     var emotions: EmotionsViewModel { EmotionsViewModel(user: user) }
     
-    init(
-        user: User = .current,
-        selected: Binding<Exercise?> = .constant(nil)
-    ) {
+    init(user: User = .current, router: Router = .shared) {
         self.user = user
-        self._selected = selected
+        self.router = router
     }
     
     func card(for exercise: Exercise) -> MenuCardViewModel {
-        MenuCardViewModel(
-            exercise: exercise,
-            isSelected: Binding(
-                get: { [weak self] in self?.selected == exercise },
-                set: { [weak self] in self?.selected = $0 ? exercise : nil }
-            )
-        )
+        MenuCardViewModel(exercise: exercise, router: router)
     }
     
 }
