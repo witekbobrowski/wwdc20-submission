@@ -29,6 +29,7 @@ struct EmotionScaleView: View {
                     ForEach(self.viewModel.scale) { index in
                         self.trapezoid(for: index, in: geometry)
                     }
+                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
                 }
             }
         }
@@ -48,7 +49,7 @@ struct EmotionScaleView: View {
     
     private func actualSize(_ size: CGSize) -> CGSize {
         CGSize(
-            width: size.width - titleWidth,
+            width: size.width,
             height: size.height - ((size.width / size.height) * 18 / 2)
         )
     }
@@ -60,5 +61,6 @@ struct EmotionScaleView: View {
 struct EmotionScaleView_Previews: PreviewProvider {
     static var previews: some View {
         EmotionScaleView(viewModel: EmotionScaleViewModel(emotion: .anger))
+            .frame(width: 320, height: 90)
     }
 }
