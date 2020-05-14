@@ -10,7 +10,7 @@ import SwiftUI
 
 struct EmotionScaleView: View {
 
-    private let titleWidth: CGFloat = 36
+    private let titleWidth: CGFloat = 48
     private let spacing: CGFloat = 4
     
     var viewModel: EmotionScaleViewModel
@@ -20,9 +20,18 @@ struct EmotionScaleView: View {
             ZStack(alignment: .trailing) {
                 HStack {
                     Group {
-                        Text(self.viewModel.title)
-                            .font(Style.Font.font(size: 22))
-                            .bold()
+                        Button(action: {}) {
+                            Text(self.viewModel.title)
+                                .font(Style.Font.font(size: 22))
+                                .foregroundColor(.blue)
+                                .bold()
+                                .padding(EdgeInsets(top: 4, leading: 12, bottom: 4, trailing: 12))
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 8, style: .continuous)
+                                        .stroke(lineWidth: 2)
+                                        .foregroundColor(Color.blue)
+                                )
+                        }
                             .rotationEffect(.degrees(-90), anchor: .center)
                             .frame(width: 256)
                     }.frame(width: self.titleWidth)
@@ -60,7 +69,8 @@ struct EmotionScaleView: View {
         
         return Trapezoid(insetAmount: inset)
             .frame(width: width, height: adjustedHeight)
-            .foregroundColor(.gray)
+            .foregroundColor(Color(white: 0.9))
+            .cornerRadius(4)
     }
     
     private func boundingBox(_ size: CGSize) -> CGSize {

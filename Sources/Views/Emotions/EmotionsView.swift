@@ -18,7 +18,6 @@ struct EmotionsView: View {
             HeaderView(title: viewModel.title)
             Spacer()
             EmotionsPickerView(viewModel: viewModel.pickerViewModel)
-                .padding(EdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16))
                 .aspectRatio(1, contentMode: .fit)
                 .rotationEffect(rotation, anchor: .center)
                 .animation(.easeInOut)

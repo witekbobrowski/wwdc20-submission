@@ -15,12 +15,14 @@ struct RotationView: View {
     
     var body: some View {
         HStack(spacing: 12) {
-            button(action: {
-                self.rotation = self.viewModel.left(self.rotation)
-            }, asset: viewModel.leftSymbol)
-            button(action: {
-                self.rotation = self.viewModel.right(self.rotation)
-            }, asset: viewModel.rightSymbol)
+            button(
+                action: { self.rotation = self.viewModel.left(self.rotation) },
+                asset: viewModel.leftSymbol
+            )
+            button(
+                action: { self.rotation = self.viewModel.right(self.rotation) },
+                asset: viewModel.rightSymbol
+            )
         }
     }
     

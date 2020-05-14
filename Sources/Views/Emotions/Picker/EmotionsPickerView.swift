@@ -19,6 +19,7 @@ struct EmotionsPickerView: View {
                     .rotationEffect(self.angle(for: index), anchor: .center)
             }
         }
+        .padding(EdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16))
     }
     
     private func scale(for index: Int) -> some View {
@@ -34,7 +35,7 @@ struct EmotionsPickerView: View {
     
     private func angle(for index: Int) -> Angle {
         let step = 360 / Double(viewModel.items.count)
-        return .degrees(Double(index) * step + step / 2)
+        return .degrees(Double(index) * step)
     }
     
     private func boundingBox(in geometry: GeometryProxy) -> CGSize {
@@ -56,7 +57,6 @@ struct EmotionsPickerView: View {
 struct EmotionsPickerView_Previews: PreviewProvider {
     static var previews: some View {
         EmotionsPickerView(viewModel: EmotionsPickerViewModel())
-            .clipShape(Circle())
             .padding(EdgeInsets(top: 32, leading: 32, bottom: 32, trailing: 32))
     }
 }
