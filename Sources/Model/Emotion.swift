@@ -8,7 +8,7 @@
 
 enum Emotion: String, CaseIterable {
     case sadness
-    case happiness
+    case joy
     case shame
     case anger
     case excitement

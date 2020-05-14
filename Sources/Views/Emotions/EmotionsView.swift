@@ -17,10 +17,12 @@ struct EmotionsView: View {
             HeaderView(title: self.viewModel.title)
             Spacer()
             EmotionsPickerView(viewModel: EmotionsPickerViewModel())
+                .padding(EdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16))
+                .aspectRatio(1, contentMode: .fit)
             Spacer()
         }
         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-        .padding(EdgeInsets(top: 64, leading: 32, bottom: 64, trailing: 32))
+        .padding(EdgeInsets(top: 32, leading: 32, bottom: 32, trailing: 32))
         .background(Style.Color.background)
     }
     
