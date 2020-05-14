@@ -11,11 +11,16 @@ import SwiftUI
 struct RotationView: View {
     
     var viewModel: RotationViewModel
+    @Binding var rotation: Angle
     
     var body: some View {
         HStack(spacing: 12) {
-            button(action: viewModel.left, asset: viewModel.leftSymbol)
-            button(action: viewModel.right, asset: viewModel.rightSymbol)
+            button(action: {
+                self.rotation = self.viewModel.left(self.rotation)
+            }, asset: viewModel.leftSymbol)
+            button(action: {
+                self.rotation = self.viewModel.right(self.rotation)
+            }, asset: viewModel.rightSymbol)
         }
     }
     
@@ -37,6 +42,8 @@ struct RotationView: View {
 
 struct RotationView_Previews: PreviewProvider {
     static var previews: some View {
-        RotationView(viewModel: RotationViewModel(rotation: .init(initialValue: .zero)))
+        RotationView(
+            viewModel: RotationViewModel(), rotation: .constant(.zero)
+        )
     }
 }

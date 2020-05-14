@@ -10,20 +10,14 @@ import SwiftUI
 
 final class RotationViewModel {
     
-    @Published var rotation: Angle
-    
     var leftSymbol: String { "rotate.left" }
     var rightSymbol: String { "rotate.right" }
     
-    init(rotation: Published<Angle>) {
-        self._rotation = rotation
+    func left(_ current: Angle) -> Angle {
+        Angle(degrees: current.degrees - 30)
     }
-    
-    func left() {
-        rotation = Angle(degrees: rotation.degrees - 90)
-    }
-    func right() {
-        rotation = Angle(degrees: rotation.degrees + 90)
+    func right(_ current: Angle) -> Angle {
+        Angle(degrees: current.degrees + 30)
     }
     
 }

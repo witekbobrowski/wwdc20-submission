@@ -8,18 +8,16 @@
 
 import SwiftUI
 
-final class EmotionsViewModel: ObservableObject {
+final class EmotionsViewModel {
     
     private let user: User
-    
-    @Published var rotation: Angle = .zero
     
     var title: String { "Emotions" }
     var pickerViewModel: EmotionsPickerViewModel {
         EmotionsPickerViewModel()
     }
     var rotationViewModel: RotationViewModel {
-        RotationViewModel(rotation: _rotation)
+        RotationViewModel()
     }
     
     init(user: User = User(name: "Witek")) {

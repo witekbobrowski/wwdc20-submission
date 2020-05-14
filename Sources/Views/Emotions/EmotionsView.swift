@@ -10,7 +10,8 @@ import SwiftUI
 
 struct EmotionsView: View {
     
-    @ObservedObject var viewModel: EmotionsViewModel
+    var viewModel: EmotionsViewModel
+    @State var rotation: Angle = .zero
     
     var body: some View {
         VStack {
@@ -19,9 +20,12 @@ struct EmotionsView: View {
             EmotionsPickerView(viewModel: viewModel.pickerViewModel)
                 .padding(EdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16))
                 .aspectRatio(1, contentMode: .fit)
-                .rotationEffect(viewModel.rotation, anchor: .center)
+                .rotationEffect(rotation, anchor: .center)
+                .animation(.easeInOut)
             Spacer()
-            RotationView(viewModel: viewModel.rotationViewModel)
+            RotationView(
+                viewModel: viewModel.rotationViewModel, rotation: $rotation
+            )
         }
         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
         .padding(EdgeInsets(top: 32, leading: 32, bottom: 32, trailing: 32))
