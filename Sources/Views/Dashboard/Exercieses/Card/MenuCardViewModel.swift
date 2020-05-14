@@ -10,20 +10,14 @@ import SwiftUI
 
 final class MenuCardViewModel {
 
-    private let exercise: Exercise
-    private let router: Router
+    let exercise: Exercise
     
     var icon: String { exercise.icon }
     var title: String { exercise.title }
     var subtitle: String { exercise.shortDescription }
     
-    init(exercise: Exercise = .emotions, router: Router = .shared) {
+    init(exercise: Exercise = .emotions) {
         self.exercise = exercise
-        self.router = router
-    }
-
-    func action() {
-        router.presented = exercise
     }
     
 }

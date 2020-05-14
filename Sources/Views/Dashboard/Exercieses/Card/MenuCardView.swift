@@ -12,9 +12,10 @@ struct MenuCardView: View  {
     
     var viewModel: MenuCardViewModel
     var accentColor: Color
+    @EnvironmentObject private var router: Router
     
     var body: some View {
-        Button(action: { self.viewModel.action() }) {
+        Button(action: { self.router.presented = self.viewModel.exercise }) {
             VStack(alignment: .center, spacing: 8) {
                 Text(viewModel.icon)
                     .font(.system(size: 80))

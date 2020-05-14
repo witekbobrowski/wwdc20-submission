@@ -11,19 +11,17 @@ import SwiftUI
 final class DashboardViewModel {
     
     private let user: User
-    let router: Router
     
     var title: String { "Hello, \(user.name)!" }
     var exercises: ExercisesViewModel {
-        ExercisesViewModel(user: user, router: router)
+        ExercisesViewModel(user: user)
     }
     var emotions: EmotionsViewModel {
         EmotionsViewModel(user: user)
     }
     
-    init(user: User = .current, router: Router = .shared) {
+    init(user: User = .current) {
         self.user = user
-        self.router = router
     }
     
 }

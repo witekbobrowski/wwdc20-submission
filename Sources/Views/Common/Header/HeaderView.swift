@@ -11,6 +11,7 @@ import SwiftUI
 struct HeaderView: View  {
     
     @State var title: String
+    @EnvironmentObject var router: Router
     
     var body: some View {
         HStack {
@@ -19,8 +20,8 @@ struct HeaderView: View  {
                 .kerning(0.5)
                 .multilineTextAlignment(.leading)
             Spacer()
-            if Router.shared.presented != nil {
-                Button(action: { Router.shared.presented = nil }) {
+            if router.presented != nil {
+                Button(action: { self.router.presented = nil }) {
                     Image(systemName: "xmark")
                         .resizable()
                         .foregroundColor(.black)

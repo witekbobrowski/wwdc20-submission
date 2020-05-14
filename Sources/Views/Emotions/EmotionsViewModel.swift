@@ -6,13 +6,21 @@
 //  Copyright © 2020 Witek Bobrowski. All rights reserved.
 //
 
-import Foundation
+import SwiftUI
 
-final class EmotionsViewModel {
+final class EmotionsViewModel: ObservableObject {
     
     private let user: User
     
+    @Published var rotation: Angle = .zero
+    
     var title: String { "Emotions" }
+    var pickerViewModel: EmotionsPickerViewModel {
+        EmotionsPickerViewModel()
+    }
+    var rotationViewModel: RotationViewModel {
+        RotationViewModel(rotation: _rotation)
+    }
     
     init(user: User = User(name: "Witek")) {
         self.user = user

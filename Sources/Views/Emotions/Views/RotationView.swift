@@ -9,10 +9,13 @@
 import SwiftUI
 
 struct RotationView: View {
+    
+    var viewModel: RotationViewModel
+    
     var body: some View {
         HStack(spacing: 12) {
-            button(action: {}, asset: "rotate.left")
-            button(action: {}, asset: "rotate.right")
+            button(action: viewModel.left, asset: viewModel.leftSymbol)
+            button(action: viewModel.right, asset: viewModel.rightSymbol)
         }
     }
     
@@ -26,7 +29,7 @@ struct RotationView: View {
             }
             .padding(.all, 6)
             .background(Color.black)
-            .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+            .clipShape(RoundedRectangle(cornerRadius: 6, style: .continuous))
             .shadow(radius: 4)
         }
     }
@@ -34,6 +37,6 @@ struct RotationView: View {
 
 struct RotationView_Previews: PreviewProvider {
     static var previews: some View {
-        RotationView()
+        RotationView(viewModel: RotationViewModel(rotation: .init(initialValue: .zero)))
     }
 }

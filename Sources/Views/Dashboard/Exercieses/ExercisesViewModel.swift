@@ -11,17 +11,15 @@ import SwiftUI
 final class ExercisesViewModel {
     
     private let user: User
-    private let router: Router
     
     var emotions: EmotionsViewModel { EmotionsViewModel(user: user) }
     
-    init(user: User = .current, router: Router = .shared) {
+    init(user: User = .current) {
         self.user = user
-        self.router = router
     }
     
     func card(for exercise: Exercise) -> MenuCardViewModel {
-        MenuCardViewModel(exercise: exercise, router: router)
+        MenuCardViewModel(exercise: exercise)
     }
     
 }

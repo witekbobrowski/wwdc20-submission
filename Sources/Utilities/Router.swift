@@ -9,9 +9,5 @@
 import SwiftUI
 
 class Router: ObservableObject {
-    
-    static let shared = Router()
-    
     @Published var presented: Exercise?
-    
 }

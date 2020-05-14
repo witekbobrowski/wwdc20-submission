@@ -10,18 +10,14 @@ import SwiftUI
 
 struct RootView: View {
     
-    @ObservedObject var router: Router
-    
-    private var dashboard: DashboardView {
-        DashboardView(viewModel: DashboardViewModel())
-    }
+    @EnvironmentObject var router: Router
     
     var body: some View {
-        Group {
+        ZStack {
             if router.presented == .emotions {
                 EmotionsView(viewModel: EmotionsViewModel())
             } else {
-                dashboard
+                DashboardView(viewModel: DashboardViewModel())
             }
         }
     }
