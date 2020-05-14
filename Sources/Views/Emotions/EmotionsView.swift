@@ -20,6 +20,7 @@ struct EmotionsView: View {
                 .padding(EdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16))
                 .aspectRatio(1, contentMode: .fit)
             Spacer()
+            RotationView()
         }
         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
         .padding(EdgeInsets(top: 32, leading: 32, bottom: 32, trailing: 32))
