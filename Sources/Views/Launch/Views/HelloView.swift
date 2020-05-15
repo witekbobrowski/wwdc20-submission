@@ -16,7 +16,7 @@ struct HelloView: View {
         VStack(spacing: 16) {
             VStack {
                 Text("hello")
-                    .font(Style.Font.font(size: 32))
+                    .font(Style.Font.chalk(size: 32))
                     .bold()
                     .foregroundColor(.white)
                     .fillHorizontally()
