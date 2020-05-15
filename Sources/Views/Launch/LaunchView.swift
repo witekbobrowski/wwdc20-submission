@@ -12,7 +12,7 @@ struct LaunchView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             HelloView()
-                .frame(width: 380, height: 380, alignment: .center)
+                .frame(width: 400, alignment: .center)
         }.fill().padding(Style.Insets.base).background(Style.Color.background)
     }
 }

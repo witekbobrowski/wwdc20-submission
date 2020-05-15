@@ -20,9 +20,15 @@ enum Style {
     }
     enum Font {
         static func font(size: CGFloat) -> SwiftUI.Font {
+            SwiftUI.Font.system(size: size, design: .rounded)
+        }
+        static func font(style: SwiftUI.Font.TextStyle) -> SwiftUI.Font {
+            SwiftUI.Font.system(style, design: .rounded)
+        }
+        static func chalk(size: CGFloat) -> SwiftUI.Font {
             SwiftUI.Font.custom("Chalkduster", size: size)
         }
-        static func font(style: UIFont.TextStyle) -> SwiftUI.Font {
+        static func chalk(style: UIFont.TextStyle) -> SwiftUI.Font {
             SwiftUI.Font.custom(
                 "Chalkduster",
                 size: UIFont.preferredFont(forTextStyle: style).pointSize

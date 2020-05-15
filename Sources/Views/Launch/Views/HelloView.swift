@@ -13,7 +13,7 @@ struct HelloView: View {
     @State var name = ""
     
     var body: some View {
-        VStack {
+        VStack(spacing: 16) {
             VStack {
                 Text("hello")
                     .font(Style.Font.font(size: 32))
@@ -30,13 +30,13 @@ struct HelloView: View {
                 .contentShape(Rectangle())
                 .background(Style.Color.black)
             TextField("type your name :)", text: $name)
-                .font(Style.Font.font(style: .largeTitle))
-                .multilineTextAlignment(.center)
+                .font(Style.Font.chalk(style: .largeTitle))
                 .scaledToFit()
                 .minimumScaleFactor(0.5)
                 .lineLimit(1)
-                .frame(minHeight: 80)
-                .padding(.all, 8)
+                .multilineTextAlignment(.center)
+                .frame(minHeight: 120)
+                .padding([.leading, .trailing], 12)
             ZStack {
                 Rectangle()
                     .foregroundColor(Style.Color.black)
@@ -58,6 +58,6 @@ struct HelloView: View {
 struct HelloView_Previews: PreviewProvider {
     static var previews: some View {
         HelloView()
-            .frame(width: 300, height: 300, alignment: .center)
+            .frame(width: 400, alignment: .center)
     }
 }

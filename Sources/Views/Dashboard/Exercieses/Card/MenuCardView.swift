@@ -21,7 +21,7 @@ struct MenuCardView: View  {
                     .font(.system(size: 80))
                     .bold()
                 Text(viewModel.title)
-                    .font(Style.Font.font(style: .title1))
+                    .font(Style.Font.font(style: .title))
                     .bold()
                     .kerning(0.5)
                     .multilineTextAlignment(.center)
