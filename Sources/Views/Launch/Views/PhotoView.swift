@@ -17,10 +17,12 @@ struct PhotoView: View {
     }
     
     private var camera: some View {
-        Image(systemName: "camera.fill")
-            .resizable()
-            .scaledToFit()
-            .foregroundColor(Style.Color.black)
+        Button(action: {}) {
+            Image(systemName: "camera.fill")
+                .resizable()
+                .scaledToFit()
+                .foregroundColor(Style.Color.black)
+        }
     }
     
     var body: some View {
@@ -38,6 +40,7 @@ struct PhotoView: View {
                         self.camera
                             .padding(.all, 12)
                             .frame(width: geometry.size.width/4.20, height: geometry.size.height/4)
+                            .hoverEffect(.lift)
                             .background(Color.white)
                             .clipShape(Circle())
                             .shadow(radius: 8)

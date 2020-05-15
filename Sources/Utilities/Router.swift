@@ -9,5 +9,16 @@
 import SwiftUI
 
 class Router: ObservableObject {
-    @Published var presented: Exercise?
+    
+    enum Path {
+        case launch
+        indirect case dashboard(Path? = nil)
+        case exercise(Exercise)
+    }
+    
+    @Published var current: Path = .launch
+}
+
+extension Router.Path: Equatable {
+    
 }

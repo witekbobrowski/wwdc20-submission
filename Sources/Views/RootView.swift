@@ -14,12 +14,13 @@ struct RootView: View {
     
     var body: some View {
         ZStack {
-//            if router.presented == .emotions {
-//                EmotionsView(viewModel: EmotionsViewModel())
-//            } else {
-//                DashboardView(viewModel: DashboardViewModel())
-//            }
-            LaunchView()
+            if router.current == .launch {
+                LaunchView(viewModel: LaunchViewModel())
+            } else if router.current == .dashboard() {
+                DashboardView(viewModel: DashboardViewModel())
+            } else if router.current == .dashboard(.exercise(.emotions)) {
+                EmotionsView(viewModel: EmotionsViewModel())
+            }
         }
     }
     

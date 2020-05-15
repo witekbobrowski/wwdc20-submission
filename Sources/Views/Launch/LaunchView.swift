@@ -10,6 +10,7 @@ import SwiftUI
 
 struct LaunchView: View {
     
+    var viewModel: LaunchViewModel
     @EnvironmentObject var router: Router
     
     var body: some View {
@@ -24,6 +25,7 @@ struct LaunchView: View {
                     .foregroundColor(.white)
                     .bold()
                     .padding(EdgeInsets(top: 12, leading: 32, bottom: 12, trailing: 32))
+                    .hoverEffect(.lift)
                     .background(Style.Color.black)
                     .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
             }
@@ -31,13 +33,13 @@ struct LaunchView: View {
     }
     
     private func begin() {
-        
+        router.current = .dashboard()
     }
 
 }
 
 struct LaunchView_Previews: PreviewProvider {
     static var previews: some View {
-        LaunchView()
+        LaunchView(viewModel: LaunchViewModel())
     }
 }

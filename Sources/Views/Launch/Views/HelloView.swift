@@ -53,6 +53,7 @@ struct HelloView: View {
             .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
             .shadow(radius: 24)
     }
+    
 }
 
 struct HelloView_Previews: PreviewProvider {

@@ -21,8 +21,8 @@ struct HeaderView: View  {
                 .kerning(0.5)
                 .multilineTextAlignment(.leading)
             Spacer()
-            if router.presented != nil {
-                Button(action: { self.router.presented = nil }) {
+            if router.current != .dashboard() {
+                Button(action: { self.router.current = .dashboard() }) {
                     Image(systemName: "xmark")
                         .resizable()
                         .foregroundColor(Style.Color.black)
