@@ -14,7 +14,7 @@ struct EmotionsView: View {
     @State var rotation: Angle = .zero
     
     var body: some View {
-        VStack {
+        VStack(alignment: .leading, spacing: 0) {
             HeaderView(title: viewModel.title)
             Spacer()
             EmotionsPickerView(viewModel: viewModel.pickerViewModel)
@@ -24,10 +24,11 @@ struct EmotionsView: View {
             Spacer()
             RotationView(
                 viewModel: viewModel.rotationViewModel, rotation: $rotation
-            )
+            ).frame(minWidth: 0, maxWidth: .infinity)
+            FooterView()
         }
         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-        .padding(EdgeInsets(top: 32, leading: 32, bottom: 32, trailing: 32))
+        .padding(EdgeInsets(top: 12, leading: 16, bottom: 12, trailing: 16))
         .background(Style.Color.background)
     }
     

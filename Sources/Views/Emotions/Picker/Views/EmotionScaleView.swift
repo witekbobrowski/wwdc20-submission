@@ -12,6 +12,8 @@ struct EmotionScaleView: View {
 
     private let titleWidth: CGFloat = 48
     private let spacing: CGFloat = 4
+    @State private var hoveringOver: Int?
+    @State private var selected: Int?
     
     var viewModel: EmotionScaleViewModel
     
@@ -23,13 +25,13 @@ struct EmotionScaleView: View {
                         Button(action: {}) {
                             Text(self.viewModel.title)
                                 .font(Style.Font.font(size: 22))
-                                .foregroundColor(.blue)
+                                .foregroundColor(Color(white: 0.2))
                                 .bold()
                                 .padding(EdgeInsets(top: 4, leading: 12, bottom: 4, trailing: 12))
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 8, style: .continuous)
                                         .stroke(lineWidth: 2)
-                                        .foregroundColor(Color.blue)
+                                        .foregroundColor(Color(white: 0.2))
                                 )
                         }
                             .rotationEffect(.degrees(-90), anchor: .center)
@@ -40,13 +42,22 @@ struct EmotionScaleView: View {
                 GeometryReader { geometry in
                     HStack(alignment: .center, spacing: self.spacing) {
                         ForEach(self.viewModel.scale) { index in
-                            self.trapezoid(for: index, in: geometry)
+                            self.button(for: index, in: geometry)
                         }
                         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
                     }.padding([.leading, .trailing], self.spacing / 2)
                 }
                 .frame(size: self.boundingBox(geometry.size))
             }
+        }
+    }
+    
+    private func button(for index: Int, in geometry: GeometryProxy) -> some View {
+        Button(action: { self.selected = self.selected == index ? nil : index }) {
+            trapezoid(for: index, in: geometry)
+                .foregroundColor(self.color(for: index))
+        }.onHover { isWithinTheFrame in
+            self.hoveringOver = isWithinTheFrame ? index : nil
         }
     }
     
@@ -69,7 +80,6 @@ struct EmotionScaleView: View {
         
         return Trapezoid(insetAmount: inset)
             .frame(width: width, height: adjustedHeight)
-            .foregroundColor(Color(white: 0.9))
             .cornerRadius(4)
     }
     
@@ -77,6 +87,16 @@ struct EmotionScaleView: View {
         let width = size.width - titleWidth
         let height = (((size.height / 2) / size.width) * width) * 2
         return CGSize(width: width, height: height)
+    }
+    
+    private func color(for index: Int) -> Color {
+        if let current = hoveringOver, index >= current {
+            return Color(white: 0.2)
+        }
+        if let selected = selected, index >= selected {
+            return Color(white: 0.2)
+        }
+        return Color(white: 0.9)
     }
     
 }

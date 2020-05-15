@@ -23,9 +23,10 @@ struct DashboardView: View  {
                 }
                 .frame(width: geometry.size.width, alignment: .center)
             }
+            FooterView()
         }
         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-        .padding(EdgeInsets(top: 32, leading: 32, bottom: 32, trailing: 32))
+        .padding(EdgeInsets(top: 12, leading: 16, bottom: 12, trailing: 16))
         .background(Style.Color.background)
     }
     

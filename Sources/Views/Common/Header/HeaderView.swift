@@ -17,6 +17,7 @@ struct HeaderView: View  {
         HStack {
             Text(title)
                 .font(Style.Font.font(size: 48))
+                .foregroundColor(Style.Color.black)
                 .kerning(0.5)
                 .multilineTextAlignment(.leading)
             Spacer()
@@ -24,7 +25,7 @@ struct HeaderView: View  {
                 Button(action: { self.router.presented = nil }) {
                     Image(systemName: "xmark")
                         .resizable()
-                        .foregroundColor(.black)
+                        .foregroundColor(Style.Color.black)
                         .frame(width: 24, height: 24, alignment: .center)
                 }
             }

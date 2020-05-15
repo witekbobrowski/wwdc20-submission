@@ -31,14 +31,14 @@ struct RotationView: View {
             HStack {
                 Image(systemName: asset)
                     .resizable()
-                    .foregroundColor(.white)
                     .frame(width: 20, height: 20, alignment: .center)
             }
             .padding(.all, 6)
-            .background(Color.black)
-            .clipShape(RoundedRectangle(cornerRadius: 6, style: .continuous))
-            .shadow(radius: 4)
-        }
+            .overlay(
+                RoundedRectangle(cornerRadius: 8, style: .continuous)
+                    .stroke(lineWidth: 2)
+            )
+        }.foregroundColor(Color(white: 0.2))
     }
 }
 
