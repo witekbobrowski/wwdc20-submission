@@ -24,10 +24,7 @@ struct DashboardView: View  {
                 .frame(width: geometry.size.width, alignment: .center)
             }
             FooterView()
-        }
-        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-        .padding(EdgeInsets(top: 12, leading: 16, bottom: 12, trailing: 16))
-        .background(Style.Color.background)
+        }.fill().padding(Style.Insets.base).background(Style.Color.background)
     }
     
     private func destination(for exercise: Exercise?) -> some View {

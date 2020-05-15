@@ -18,6 +18,7 @@ struct FooterView: View {
             .foregroundColor(Style.Color.black)
             .bold()
             .multilineTextAlignment(.leading)
+            .fillHorizontally()
     }
     
     init(title: String = "WWDC20") {

@@ -20,10 +20,18 @@ enum Style {
     }
     enum Font {
         static func font(size: CGFloat) -> SwiftUI.Font {
-            SwiftUI.Font.system(size: size, weight: .regular, design: .rounded)
+            SwiftUI.Font.custom("Chalkduster", size: size)
         }
-        static func font(style: SwiftUI.Font.TextStyle) -> SwiftUI.Font {
-            SwiftUI.Font.system(style, design: .rounded)
+        static func font(style: UIFont.TextStyle) -> SwiftUI.Font {
+            SwiftUI.Font.custom(
+                "Chalkduster",
+                size: UIFont.preferredFont(forTextStyle: style).pointSize
+            )
+        }
+    }
+    enum Insets {
+        static var base: EdgeInsets {
+            EdgeInsets(top: 12, leading: 16, bottom: 12, trailing: 16)
         }
     }
 }

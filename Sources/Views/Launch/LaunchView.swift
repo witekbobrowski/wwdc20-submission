@@ -10,7 +10,10 @@ import SwiftUI
 
 struct LaunchView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(alignment: .leading, spacing: 0) {
+            HelloView()
+                .frame(width: 380, height: 380, alignment: .center)
+        }.fill().padding(Style.Insets.base).background(Style.Color.background)
     }
 }
 

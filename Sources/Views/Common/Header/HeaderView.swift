@@ -29,7 +29,7 @@ struct HeaderView: View  {
                         .frame(width: 24, height: 24, alignment: .center)
                 }
             }
-        }.frame(minWidth: 0, maxWidth: .infinity)
+        }.fillHorizontally()
     }
     
 }

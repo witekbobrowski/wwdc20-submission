@@ -25,11 +25,9 @@ struct EmotionsView: View {
             RotationView(
                 viewModel: viewModel.rotationViewModel, rotation: $rotation
             ).frame(minWidth: 0, maxWidth: .infinity)
+            Spacer()
             FooterView()
-        }
-        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-        .padding(EdgeInsets(top: 12, leading: 16, bottom: 12, trailing: 16))
-        .background(Style.Color.background)
+        }.fill().padding(Style.Insets.base).background(Style.Color.background)
     }
     
 }

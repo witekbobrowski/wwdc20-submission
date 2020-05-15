@@ -22,7 +22,7 @@ struct ExercisesView: View {
                 card(for: .affirmations)
                 card(for: .gratitude)
             }
-        }.frame(minWidth: 0, maxWidth: .infinity)
+        }.fillHorizontally()
     }
     
     private func card(for exercise: Exercise) -> some View {
