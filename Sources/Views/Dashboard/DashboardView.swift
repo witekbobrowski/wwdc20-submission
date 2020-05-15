@@ -13,16 +13,13 @@ struct DashboardView: View  {
     var viewModel: DashboardViewModel
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
+        VStack(alignment: .center, spacing: 0) {
             HeaderView(title: self.viewModel.title)
-            GeometryReader { geometry in
-                ScrollView(.vertical, showsIndicators: false) {
-                    Spacer(minLength: 64)
-                    ExercisesView(viewModel: self.viewModel.exercises)
-                    Spacer()
-                }
-                .frame(width: geometry.size.width, alignment: .center)
-            }
+            Spacer()
+            ExercisesView(viewModel: self.viewModel.exercises)
+                .frame(maxWidth: 800)
+                .aspectRatio(2.5, contentMode: .fit)
+            Spacer()
             FooterView()
         }.fill().padding(Style.Insets.base).background(Style.Color.background)
     }
@@ -36,5 +33,6 @@ struct DashboardView: View  {
 struct DashboardView_Previews: PreviewProvider {
     static var previews: some View {
         DashboardView(viewModel: DashboardViewModel())
+            .environmentObject(Router())
     }
 }

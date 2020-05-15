@@ -23,13 +23,13 @@ extension Exercise {
     var title: String {
         switch self {
         case .emotions:
-            return "Emotions"
+            return "emotions"
         case .drawing:
-            return "Drawing"
+            return "drawing"
         case .affirmations:
-            return "Affirmations"
+            return "affirmations"
         case .gratitude:
-            return "Gratitude"
+            return "gratitude"
         }
     }
     var icon: String {
@@ -39,21 +39,21 @@ extension Exercise {
         case .drawing:
             return "🎨"
         case .affirmations:
-            return "🌟"
+            return "🧧"
         case .gratitude:
-            return "🙌"
+            return "🌸"
         }
     }
     var shortDescription: String {
         switch self {
         case .emotions:
-            return "Short description of the exercise"
+            return "short description of the exercise"
         case .drawing:
-            return "Short description of the exercise"
+            return "short description of the exercise"
         case .affirmations:
-            return "Short description of the exercise"
+            return "short description of the exercise"
         case .gratitude:
-            return "Short description of the exercise"
+            return "short description of the exercise"
         }
     }
 }
