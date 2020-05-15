@@ -13,10 +13,10 @@ struct LaunchView: View {
     @EnvironmentObject var router: Router
     
     var body: some View {
-        VStack(alignment: .center, spacing: 0) {
+        VStack(alignment: .center, spacing: 32) {
             Spacer()
-            HelloView()
-                .frame(width: 400, alignment: .center)
+            PhotoView().frame(width: 200)
+            HelloView().frame(width: 400)
             Spacer()
             Button(action: begin) {
                 Text("begin!")
