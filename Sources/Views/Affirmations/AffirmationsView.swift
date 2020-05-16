@@ -18,7 +18,6 @@ struct AffirmationsView: View {
             Spacer()
         }.fill().padding(Style.Insets.base).background(Style.Color.background)
     }
-    
 }
 
 struct AffirmationsView_Previews: PreviewProvider {

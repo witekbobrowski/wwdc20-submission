@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Emotions {
+struct EmotionsSnapshot {
     let timestamp: Date
     let emotions: [Emotion: Int]
 }
@@ -17,9 +17,9 @@ final class EmotionsBuilder {
     var timestamp: Date?
     var emotions = [Emotion: Int]()
     
-    func build() -> Emotions? {
+    func build() -> EmotionsSnapshot? {
         guard let timestamp = timestamp, !emotions.isEmpty else { return nil }
-        return Emotions(timestamp: timestamp, emotions: emotions)
+        return EmotionsSnapshot(timestamp: timestamp, emotions: emotions)
     }
 }
 
