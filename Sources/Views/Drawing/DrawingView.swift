@@ -18,8 +18,10 @@ struct DrawingView: View {
     var body: some View {
         VStack(spacing: 0) {
             HeaderView(title: viewModel.title)
-            Spacer()
+            Spacer(minLength: 24)
             CanvasView(drawing: $drawing, color: $color)
+                .aspectRatio(1, contentMode: .fit)
+                .padding(.bottom, 24)
             ZStack {
                 HStack {
                     ColorPickerView(selected: $color)

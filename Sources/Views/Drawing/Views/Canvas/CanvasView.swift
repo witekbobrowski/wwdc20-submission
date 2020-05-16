@@ -51,10 +51,9 @@ struct CanvasView: View {
                         if self.current == nil {
                             self.current = Stroke(color: self.color)
                         }
-                        let currentPoint = value.location
-                        if currentPoint.y >= 0
-                            && currentPoint.y < geometry.size.height {
-                            self.current?.points.append(currentPoint)
+                        let point = value.location
+                        if point.y >= 0, point.y < geometry.size.height, point.x >= 0, point.x < geometry.size.width {
+                            self.current?.points.append(point)
                         }
                     })
                     .onEnded({ (value) in
