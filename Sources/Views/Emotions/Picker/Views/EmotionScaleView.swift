@@ -24,18 +24,13 @@ struct EmotionScaleView: View {
                     Group {
                         Button(action: {}) {
                             Text(self.viewModel.title)
-                                .font(Style.Font.font(size: 22))
+                                .font(Style.Font.font(size: 18))
                                 .foregroundColor(Color(white: 0.2))
                                 .bold()
-                                .padding(EdgeInsets(top: 4, leading: 12, bottom: 4, trailing: 12))
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 8, style: .continuous)
-                                        .stroke(lineWidth: 2)
-                                        .foregroundColor(Color(white: 0.2))
-                                )
+                                .padding(EdgeInsets(top: 4, leading: 8, bottom: 4, trailing: 8))
                         }
                             .rotationEffect(.degrees(-90), anchor: .center)
-                            .frame(width: 256)
+                            .frame(width: geometry.size.height)
                     }.frame(width: self.titleWidth)
                     Spacer()
                 }

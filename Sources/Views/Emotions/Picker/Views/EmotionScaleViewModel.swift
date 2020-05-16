@@ -29,12 +29,7 @@ final class EmotionScaleViewModel: ObservableObject {
     }
     
     private func select(_ index: Int?) {
-        let selected = convert(index)
-        if selected == self.selected {
-            builder.emotions[emotion] = nil
-        } else {
-            builder.emotions[emotion] = selected
-        }
+        builder.emotions[emotion] = index == selected ? nil : convert(index)
         trigger.toggle()
     }
     
