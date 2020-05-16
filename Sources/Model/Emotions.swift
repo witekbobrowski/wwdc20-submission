@@ -18,7 +18,7 @@ final class EmotionsBuilder {
     var emotions = [Emotion: Int]()
     
     func build() -> Emotions? {
-        guard let timestamp = timestamp else { return nil }
+        guard let timestamp = timestamp, !emotions.isEmpty else { return nil }
         return Emotions(timestamp: timestamp, emotions: emotions)
     }
 }

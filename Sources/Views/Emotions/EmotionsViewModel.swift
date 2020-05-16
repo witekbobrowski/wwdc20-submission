@@ -26,6 +26,7 @@ final class EmotionsViewModel: ObservableObject {
     init(user: User = User(name: "Witek"), builder: EmotionsBuilder = EmotionsBuilder()) {
         self.user = user
         self.builder = builder
+        if builder.timestamp == nil { builder.timestamp = Date() }
     }
     
     func save() {
