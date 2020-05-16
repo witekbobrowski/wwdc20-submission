@@ -14,19 +14,21 @@ struct HeaderView: View  {
     @EnvironmentObject var router: Router
     
     var body: some View {
-        HStack {
+        ZStack {
             Text(title)
                 .font(Style.Font.font(size: 48))
                 .foregroundColor(Style.Color.black)
                 .kerning(0.5)
-                .multilineTextAlignment(.leading)
-            Spacer()
-            if router.current != .dashboard() {
-                Button(action: { self.router.current = .dashboard() }) {
-                    Image(systemName: "xmark")
-                        .resizable()
-                        .foregroundColor(Style.Color.black)
-                        .frame(width: 24, height: 24, alignment: .center)
+                .multilineTextAlignment(.center)
+            HStack {
+                Spacer()
+                if router.current != .dashboard() {
+                    Button(action: { self.router.current = .dashboard() }) {
+                        Image(systemName: "xmark")
+                            .resizable()
+                            .foregroundColor(Style.Color.black)
+                            .frame(width: 24, height: 24, alignment: .center)
+                    }
                 }
             }
         }.fillHorizontally()

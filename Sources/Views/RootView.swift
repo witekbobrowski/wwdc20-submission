@@ -16,12 +16,23 @@ struct RootView: View {
         ZStack {
             if router.current == .launch {
                 LaunchView(viewModel: LaunchViewModel())
+                    .transition(.move(edge: .bottom))
             } else if router.current == .dashboard() {
                 DashboardView(viewModel: DashboardViewModel())
             } else if router.current == .dashboard(.exercise(.emotions)) {
                 EmotionsView(viewModel: EmotionsViewModel())
+                    .transition(.move(edge: .bottom))
+            } else if router.current == .dashboard(.exercise(.drawing)) {
+                DrawingView(viewModel: DrawingViewModel())
+                    .transition(.move(edge: .bottom))
+            } else if router.current == .dashboard(.exercise(.affirmations)) {
+                AffirmationsView(viewModel: AffirmationsViewModel())
+                    .transition(.move(edge: .bottom))
+            } else if router.current == .dashboard(.exercise(.gratitude)) {
+                GratitudeView(viewModel: GratitudeViewModel())
+                    .transition(.move(edge: .bottom))
             }
-        }.animation(.easeInOut(duration: 0.5))
+        }.animation(.easeInOut(duration: 0.3))
     }
     
 }

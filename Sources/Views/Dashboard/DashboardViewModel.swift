@@ -12,7 +12,7 @@ final class DashboardViewModel {
     
     private let user: User
     
-    var title: String { "hello, \(user.name)!" }
+    var title: String { "Hello, \(user.name)!" }
     var exercises: ExercisesViewModel {
         ExercisesViewModel(user: user)
     }

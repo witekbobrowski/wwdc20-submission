@@ -15,7 +15,7 @@ final class EmotionsViewModel: ObservableObject {
     
     @Published private var emotions = [Emotion: Int]()
     
-    var title: String { "Emotions" }
+    var title: String { Exercise.emotions.title.capitalized }
     var pickerViewModel: EmotionsPickerViewModel {
         EmotionsPickerViewModel(builder: builder)
     }

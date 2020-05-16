@@ -1,5 +1,5 @@
 //
-//  DrawingView.swift
+//  AffirmationsView.swift
 //  Emotions
 //
 //  Created by Witek Bobrowski on 16/05/2020.
@@ -8,9 +8,9 @@
 
 import SwiftUI
 
-struct DrawingView: View {
+struct AffirmationsView: View {
     
-    var viewModel: DrawingViewModel
+    var viewModel: AffirmationsViewModel
     
     var body: some View {
         VStack(spacing: 0) {
@@ -21,8 +21,8 @@ struct DrawingView: View {
     
 }
 
-struct DrawingView_Previews: PreviewProvider {
+struct AffirmationsView_Previews: PreviewProvider {
     static var previews: some View {
-        DrawingView(viewModel: DrawingViewModel())
+        AffirmationsView(viewModel: AffirmationsViewModel())
     }
 }
