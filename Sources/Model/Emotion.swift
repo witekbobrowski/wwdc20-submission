@@ -20,3 +20,22 @@ enum Emotion: String, CaseIterable {
     case peace
     case fear
 }
+
+extension Emotion {
+    var emoji: String {
+        switch self {
+        case .sadness: return "😞"
+        case .joy: return "😋"
+        case .shame: return "😖"
+        case .anger: return "😡"
+        case .excitement: return "🤩"
+        case .disgust: return "🤢"
+        case .love: return "🥰"
+        case .envy: return "🥺"
+        case .surprise: return "🤭"
+        case .boredom: return "🥱"
+        case .peace: return "😌"
+        case .fear: return "😧"
+        }
+    }
+}

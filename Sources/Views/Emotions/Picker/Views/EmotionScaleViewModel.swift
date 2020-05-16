@@ -21,7 +21,7 @@ final class EmotionScaleViewModel: ObservableObject {
         set { select(newValue) }
     }
     
-    var title: String { emotion.rawValue.capitalized }
+    var title: String { emotion.emoji + " " + emotion.rawValue.capitalized }
     
     init(emotion: Emotion, builder: EmotionsBuilder = EmotionsBuilder()) {
         self.emotion = emotion

@@ -90,13 +90,12 @@ struct EmotionScaleView: View {
     }
     
     private func color(for index: Int) -> Color {
-        if let current = hoveringOver, index >= current {
-            return Color(white: 0.2)
+        if let current = hoveringOver {
+            return index >= current ? Style.Color.black : Style.Color.lightGray
         }
         if let selected = viewModel.selected, index >= selected {
-            return Color(white: 0.2)
-        }
-        return Color(white: 0.9)
+            return Style.Color.black
+        } else { return Style.Color.lightGray }
     }
     
 }
