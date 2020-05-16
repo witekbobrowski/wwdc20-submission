@@ -20,12 +20,11 @@ struct LaunchView: View {
             HelloView().frame(width: 400)
             Spacer()
             Button(action: begin) {
-                Text("begin!")
+                Text("Begin")
                     .font(Style.Font.font(style: .title))
                     .foregroundColor(.white)
                     .bold()
                     .padding(EdgeInsets(top: 12, leading: 32, bottom: 12, trailing: 32))
-                    .hoverEffect(.lift)
                     .background(Style.Color.black)
                     .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
             }

@@ -14,7 +14,7 @@ struct EmotionsView: View {
     @State var rotation: Angle = .zero
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
+        VStack(spacing: 0) {
             HeaderView(title: viewModel.title)
             Spacer()
             EmotionsPickerView(viewModel: viewModel.pickerViewModel)
@@ -26,6 +26,16 @@ struct EmotionsView: View {
                 viewModel: viewModel.rotationViewModel, rotation: $rotation
             ).frame(minWidth: 0, maxWidth: .infinity)
             Spacer()
+            Button(action: viewModel.save) {
+                Text("Continue")
+                    .font(Style.Font.font(style: .headline))
+                    .foregroundColor(.white)
+                    .bold()
+                    .padding(EdgeInsets(top: 8, leading: 32, bottom: 8, trailing: 32))
+                    .background(Style.Color.black)
+                    .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+            }
+            Spacer(minLength: 12)
             FooterView()
         }.fill().padding(Style.Insets.base).background(Style.Color.background)
     }
@@ -36,5 +46,6 @@ struct EmotionsView: View {
 struct EmotionsView_Previews: PreviewProvider {
     static var previews: some View {
         EmotionsView(viewModel: EmotionsViewModel())
+            .environmentObject(Router())
     }
 }

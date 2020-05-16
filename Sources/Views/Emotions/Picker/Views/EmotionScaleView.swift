@@ -12,10 +12,10 @@ struct EmotionScaleView: View {
 
     private let titleWidth: CGFloat = 48
     private let spacing: CGFloat = 4
+
     @State private var hoveringOver: Int?
-    @State private var selected: Int?
     
-    var viewModel: EmotionScaleViewModel
+    @ObservedObject var viewModel: EmotionScaleViewModel
     
     var body: some View {
         GeometryReader { geometry in
@@ -53,7 +53,7 @@ struct EmotionScaleView: View {
     }
     
     private func button(for index: Int, in geometry: GeometryProxy) -> some View {
-        Button(action: { self.selected = self.selected == index ? nil : index }) {
+        Button(action: { self.viewModel.selected = index }) {
             trapezoid(for: index, in: geometry)
                 .foregroundColor(self.color(for: index))
         }.onHover { isWithinTheFrame in
@@ -93,7 +93,7 @@ struct EmotionScaleView: View {
         if let current = hoveringOver, index >= current {
             return Color(white: 0.2)
         }
-        if let selected = selected, index >= selected {
+        if let selected = viewModel.selected, index >= selected {
             return Color(white: 0.2)
         }
         return Color(white: 0.9)

@@ -10,14 +10,16 @@ import Foundation
 
 final class EmotionsPickerViewModel {
     
+    private let builder: EmotionsBuilder
     let items: [Emotion]
     
-    init(items: [Emotion] = Emotion.allCases) {
+    init(items: [Emotion] = Emotion.allCases, builder: EmotionsBuilder = EmotionsBuilder()) {
         self.items = items
+        self.builder = builder
     }
     
     func scale(forItemAt index: Int) -> EmotionScaleViewModel {
-        EmotionScaleViewModel(emotion: items[index])
+        EmotionScaleViewModel(emotion: items[index], builder: builder)
     }
     
 }

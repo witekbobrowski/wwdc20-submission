@@ -21,7 +21,7 @@ struct RootView: View {
             } else if router.current == .dashboard(.exercise(.emotions)) {
                 EmotionsView(viewModel: EmotionsViewModel())
             }
-        }
+        }.animation(.easeInOut(duration: 0.5))
     }
     
 }

@@ -8,16 +8,40 @@
 
 import Foundation
 
-final class EmotionScaleViewModel {
+final class EmotionScaleViewModel: ObservableObject {
     
     private let emotion: Emotion
+    private let builder: EmotionsBuilder
     
-    let scale: Range<Int> = 0..<6
+    @Published private var trigger = false
+    
+    let scale: Range<Int> = 0..<5
+    var selected: Int? {
+        get { convert(builder.emotions[emotion]) }
+        set { select(newValue) }
+    }
     
     var title: String { emotion.rawValue.capitalized }
     
-    init(emotion: Emotion) {
+    init(emotion: Emotion, builder: EmotionsBuilder = EmotionsBuilder()) {
         self.emotion = emotion
+        self.builder = builder
+    }
+    
+    private func select(_ index: Int?) {
+        let selected = convert(index)
+        if selected == self.selected {
+            builder.emotions[emotion] = nil
+        } else {
+            builder.emotions[emotion] = selected
+        }
+        trigger.toggle()
+    }
+    
+    private func convert(_ index: Int?) -> Int? {
+        let reversed = Array(scale.reversed())
+        guard let index = index, reversed.indices.contains(index) else { return nil }
+        return reversed[index]
     }
     
 }
