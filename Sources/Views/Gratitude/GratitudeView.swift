@@ -38,6 +38,7 @@ struct GratitudeView: View {
                 )
             }
             Spacer()
+            FooterView()
         }.fill().padding(Style.Insets.base).background(Style.Color.background)
     }
     
