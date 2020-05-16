@@ -18,15 +18,14 @@ struct DrawingTitleView: View {
                 .font(Style.Font.font(size: 23))
                 .bold()
                 .multilineTextAlignment(.center)
+                .padding(.bottom, 4)
             Text(emotion.rawValue.capitalized)
-                .font(Style.Font.chalk(size: 23))
+                .font(Style.Font.chalk(size: 28))
                 .underline()
                 .bold()
                 .multilineTextAlignment(.center)
-                .padding(.top, 4)
+                .frame(width: 300, alignment: .center)
         }
-        .scaledToFill()
-        .fillHorizontally()
     }
 }
 
