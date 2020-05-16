@@ -10,15 +10,12 @@ import SwiftUI
 
 class Router: ObservableObject {
     
-    enum Path {
+    enum Path: Equatable {
         case launch
         indirect case dashboard(Path? = nil)
         case exercise(Exercise)
     }
     
     @Published var current: Path = .launch
-}
-
-extension Router.Path: Equatable {
     
 }
