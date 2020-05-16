@@ -8,31 +8,17 @@
 
 import SwiftUI
 
-struct Drawing {
-    var strokes = [Stroke]()
-}
-
-struct Stroke: Hashable {
-    var color: Color
-    var points = [CGPoint]()
-    
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(color)
-        hasher.combine(points)
-    }
-}
-
 struct CanvasView: View {
     
     @State private var current: Stroke?
-    @Binding var drawing: Drawing
+    @Binding var strokes: [Stroke]
     @Binding var color: Color
     
     var body: some View {
         GeometryReader { geometry in
             Group {
                 ZStack {
-                    ForEach(self.drawing.strokes, id: \.self) { stroke in
+                    ForEach(self.strokes, id: \.self) { stroke in
                         Path { path in
                             self.add(stroke, to: &path)
                         }.stroke(stroke.color, lineWidth: 4)
@@ -57,7 +43,7 @@ struct CanvasView: View {
                         }
                     })
                     .onEnded({ (value) in
-                        self.current.map { self.drawing.strokes.append($0) }
+                        self.current.map { self.strokes.append($0) }
                         self.current = nil
                     })
             )
@@ -81,15 +67,7 @@ struct CanvasView: View {
 struct CanvasView_Previews: PreviewProvider {
     static var previews: some View {
         CanvasView(
-            drawing: .constant(Drawing()),
-            color: .constant(Style.Color.black)
+            strokes: .constant([]), color: .constant(Style.Color.black)
         )
-    }
-}
-
-extension CGPoint: Hashable {
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(x)
-        hasher.combine(y)
     }
 }

@@ -12,22 +12,37 @@ struct DrawingView: View {
     
     var viewModel: DrawingViewModel
     
-    @State var drawing = Drawing()
-    @State var color = Style.Color.black
+    @State var strokes: [Stroke] = [] {
+        didSet { viewModel.builder.strokes = strokes }
+    }
+    @State var emotion: Emotion = .anger {
+        didSet { viewModel.builder.emotion = emotion }
+    }
+    @State var color: Color = .black
     
     var body: some View {
         VStack(spacing: 0) {
             HeaderView(title: viewModel.title)
-            Spacer(minLength: 24)
-            CanvasView(drawing: $drawing, color: $color)
+            Spacer(minLength: 12)
+            DrawingTitleView(emotion: $emotion)
+            Spacer(minLength: 12)
+            CanvasView(strokes: $strokes, color: $color)
                 .aspectRatio(1, contentMode: .fit)
+                .shadow(color: Style.Color.lightGray, radius: 32, x: 0, y: 0)
                 .padding(.bottom, 24)
             ZStack {
                 HStack {
                     ColorPickerView(selected: $color)
                     Spacer()
                 }.padding(.leading, 12)
-                Button(action: {}) {
+                HStack {
+                    Spacer()
+                    Button(action: { self.emotion = Emotion.allCases.randomElement()! }) {
+                        Text("🎲 try different emotion")
+                            .font(Style.Font.font(style: .footnote))
+                    }.foregroundColor(Color(white: 0.2)).padding(.trailing, 12)
+                }.padding(.leading, 12)
+                Button(action: viewModel.save) {
                     Text("Continue")
                         .font(Style.Font.font(style: .headline))
                         .foregroundColor(.white)
@@ -39,6 +54,13 @@ struct DrawingView: View {
             }.padding(.bottom, 24)
             FooterView()
         }.fill().padding(Style.Insets.base).background(Style.Color.background)
+    }
+    
+    init(viewModel: DrawingViewModel) {
+        self.viewModel = viewModel
+        self.emotion = viewModel.builder.emotion!
+        self.strokes = viewModel.builder.strokes
+        self.color = Style.Color.black
     }
     
 }

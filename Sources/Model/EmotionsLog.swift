@@ -1,5 +1,5 @@
 //
-//  Emotions.swift
+//  EmotionsSnapshot.swift
 //  Emotions
 //
 //  Created by Witek Bobrowski on 16/05/2020.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct EmotionsSnapshot {
+struct EmotionsLog {
     let timestamp: Date
     let emotions: [Emotion: Int]
 }
@@ -17,9 +17,9 @@ final class EmotionsBuilder {
     var timestamp: Date?
     var emotions = [Emotion: Int]()
     
-    func build() -> EmotionsSnapshot? {
+    func build() -> EmotionsLog? {
         guard let timestamp = timestamp, !emotions.isEmpty else { return nil }
-        return EmotionsSnapshot(timestamp: timestamp, emotions: emotions)
+        return EmotionsLog(timestamp: timestamp, emotions: emotions)
     }
 }
 

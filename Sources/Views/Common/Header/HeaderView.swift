@@ -16,7 +16,7 @@ struct HeaderView: View  {
     var body: some View {
         ZStack {
             Text(title)
-                .font(Style.Font.font(size: 48))
+                .font(Style.Font.font(size: 44))
                 .foregroundColor(Style.Color.black)
                 .kerning(0.5)
                 .multilineTextAlignment(.center)
