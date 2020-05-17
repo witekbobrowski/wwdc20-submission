@@ -26,11 +26,20 @@ struct GratitudeView: View {
         VStack(spacing: 0) {
             HeaderView(title: viewModel.title)
             Spacer()
-            VStack(alignment: .center, spacing: 24) {
+            VStack(alignment: .center) {
+                Spacer()
                 personQuestion
+                Spacer()
                 reasonQuestion
+                Spacer()
                 actionQuestion
+                Spacer()
             }
+                .fill()
+                .aspectRatio(1, contentMode: .fit)
+                .background(Color.white)
+                .shadow(color: Style.Color.lightGray, radius: 32, x: 0, y: 0)
+                .padding(EdgeInsets(top: 24, leading: 64, bottom: 24, trailing: 64))
             Spacer()
             FooterView()
         }.fill().padding(Style.Insets.base).background(Style.Color.background)

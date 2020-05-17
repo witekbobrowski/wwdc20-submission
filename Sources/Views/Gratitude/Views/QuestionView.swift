@@ -15,12 +15,11 @@ struct QuestionView: View {
     @Binding var answer: String
     
     var body: some View {
-        VStack {
+        VStack(alignment: .center, spacing: 12) {
             Text(title)
                 .font(Style.Font.font(style: .largeTitle))
                 .bold()
                 .multilineTextAlignment(.center)
-                .padding(.bottom, 12)
             TextField(placeholder, text: $answer)
                 .font(Style.Font.chalk(style: .largeTitle))
                 .minimumScaleFactor(0.5)

@@ -26,32 +26,8 @@ struct DrawingView: View {
             Spacer(minLength: 12)
             DrawingTitleView(emotion: $emotion)
             Spacer(minLength: 12)
-            CanvasView(strokes: $strokes, color: $color)
-                .aspectRatio(1, contentMode: .fit)
-                .shadow(color: Style.Color.lightGray, radius: 32, x: 0, y: 0)
-                .padding(.bottom, 24)
-            ZStack {
-                HStack {
-                    ColorPickerView(selected: $color)
-                    Spacer()
-                }.padding(.leading, 12)
-                HStack {
-                    Spacer()
-                    Button(action: { self.emotion = Emotion.allCases.randomElement()! }) {
-                        Text("🎲 try different emotion")
-                            .font(Style.Font.font(style: .footnote))
-                    }.foregroundColor(Color(white: 0.2)).padding(.trailing, 12)
-                }.padding(.leading, 12)
-                Button(action: viewModel.save) {
-                    Text("Continue")
-                        .font(Style.Font.font(style: .headline))
-                        .foregroundColor(.white)
-                        .bold()
-                        .padding(EdgeInsets(top: 8, leading: 32, bottom: 8, trailing: 32))
-                        .background(Style.Color.black)
-                        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-                }
-            }.padding(.bottom, 24)
+            canvas
+            controls
             FooterView()
         }.fill().padding(Style.Insets.base).background(Style.Color.background)
     }
@@ -63,6 +39,39 @@ struct DrawingView: View {
         self.color = Style.Color.black
     }
     
+}
+
+// MARK: - Subviews
+extension DrawingView {
+    private var canvas: some View {
+        CanvasView(strokes: $strokes, color: $color)
+            .aspectRatio(1, contentMode: .fit)
+            .shadow(color: Style.Color.lightGray, radius: 32, x: 0, y: 0)
+    }
+    private var controls: some View {
+        ZStack {
+            HStack {
+                ColorPickerView(selected: $color)
+                Spacer()
+            }
+            HStack {
+                Spacer()
+                Button(action: { self.emotion = Emotion.allCases.randomElement()! }) {
+                    Text("🎲 try different emotion")
+                        .font(Style.Font.font(style: .footnote))
+                }.foregroundColor(Color(white: 0.2)).padding(.trailing, 12)
+            }
+            Button(action: viewModel.save) {
+                Text("Continue")
+                    .font(Style.Font.font(style: .headline))
+                    .foregroundColor(.white)
+                    .bold()
+                    .padding(EdgeInsets(top: 8, leading: 32, bottom: 8, trailing: 32))
+                    .background(Style.Color.black)
+                    .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+            }
+        }.padding(.all, 12)
+    }
 }
 
 struct DrawingView_Previews: PreviewProvider {

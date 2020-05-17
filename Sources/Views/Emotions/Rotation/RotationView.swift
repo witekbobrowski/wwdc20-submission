@@ -14,18 +14,15 @@ struct RotationView: View {
     @Binding var rotation: Angle
     
     var body: some View {
-        HStack {
-            Spacer()
+        HStack(spacing: 8) {
             button(
                 action: { self.rotation = self.viewModel.left(self.rotation) },
                 asset: viewModel.leftSymbol
             )
-            Spacer()
             button(
                 action: { self.rotation = self.viewModel.right(self.rotation) },
                 asset: viewModel.rightSymbol
             )
-            Spacer()
         }
     }
     
