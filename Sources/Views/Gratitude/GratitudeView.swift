@@ -10,17 +10,7 @@ import SwiftUI
 
 struct GratitudeView: View {
     
-    var viewModel: GratitudeViewModel
-    
-    @State private var person = "" {
-        didSet { viewModel.builder.person = person }
-    }
-    @State private var reason = "" {
-        didSet { viewModel.builder.reason = reason }
-    }
-    @State private var action = "" {
-        didSet { viewModel.builder.reason = action }
-    }
+    @ObservedObject var viewModel: GratitudeViewModel
     
     var body: some View {
         VStack(spacing: 0) {
@@ -45,13 +35,6 @@ struct GratitudeView: View {
         }.fill().padding(Style.Insets.base).background(Style.Color.background)
     }
     
-    init(viewModel: GratitudeViewModel) {
-        self.viewModel = viewModel
-        self.person = viewModel.builder.person ?? ""
-        self.reason = viewModel.builder.reason ?? ""
-        self.action = viewModel.builder.action ?? ""
-    }
-    
 }
 
 // MARK: - Subviews
@@ -60,21 +43,21 @@ extension GratitudeView {
         QuestionView(
             title: viewModel.personQuestion,
             placeholder: viewModel.personPlaceholder,
-            answer: $person
+            answer: $viewModel.person
         )
     }
     private var reasonQuestion: some View {
         QuestionView(
             title: viewModel.reasonQuestion,
             placeholder: viewModel.reasonPlaceholder,
-            answer: $reason
+            answer: $viewModel.reason
         )
     }
     private var actionQuestion: some View {
         QuestionView(
             title: viewModel.actionQuestion,
             placeholder: viewModel.actionPlaceholder,
-            answer: $action
+            answer: $viewModel.action
         )
     }
     private var controls: some View {

@@ -17,13 +17,11 @@ final class HelloViewModel: ObservableObject {
     var placeholder: String { "type your name :)" }
     var footer: String { Strings.footer }
     
-    var name: String {
-        get { builder.name ?? "" }
-        set { builder.name = newValue }
-    }
+    @Published var name: String { didSet { builder.name = name } }
     
     init(builder: UserBuilder = UserBuilder()) {
         self.builder = builder
+        self.name = builder.name ?? ""
     }
     
 }

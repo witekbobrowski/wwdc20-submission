@@ -8,9 +8,9 @@
 
 import Foundation
 
-final class GratitudeViewModel {
+final class GratitudeViewModel: ObservableObject {
     
-    let builder: GratitudeBuilder
+    private let builder: GratitudeBuilder
     
     var title: String { Exercise.gratitude.title.capitalized }
     
@@ -21,8 +21,15 @@ final class GratitudeViewModel {
     var actionQuestion: String { "and I will show it by" }
     var actionPlaceholder: String { "letting her know that..." }
     
+    @Published var person: String { didSet { builder.person = person } }
+    @Published var reason: String { didSet { builder.reason = reason } }
+    @Published var action: String { didSet { builder.action = action } }
+    
     init(builder: GratitudeBuilder = GratitudeBuilder()) {
         self.builder = builder
+        self.person = builder.person ?? ""
+        self.reason = builder.reason ?? ""
+        self.action = builder.action ?? ""
         if builder.timestamp == nil { builder.timestamp = Date() }
     }
     

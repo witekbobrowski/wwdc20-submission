@@ -12,8 +12,6 @@ struct HelloView: View {
     
     @ObservedObject var viewModel: HelloViewModel
     
-    @State var name = ""
-    
     var body: some View {
         VStack(spacing: 16) {
             header
@@ -50,7 +48,7 @@ extension HelloView {
         .background(Style.Color.black)
     }
     private var input: some View {
-        TextField(viewModel.placeholder, text: $name)
+        TextField(viewModel.placeholder, text: $viewModel.name)
             .font(Style.Font.chalk(style: .largeTitle))
             .scaledToFit()
             .minimumScaleFactor(0.5)
