@@ -15,13 +15,13 @@ struct ProfileView: View {
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
             HeaderView(title: "Your Profile")
-            ScrollView(.vertical, showsIndicators: true) {
-                VStack(spacing: 12) {
-                    profile
-                    history
-                }.padding(.top, 24)
+            profile.padding(.top, 24).padding(.bottom, 12)
+            if !viewModel.history.items.isEmpty {
+                historyTitle.padding(.bottom, 12)
             }
-            Spacer()
+            ScrollView(.vertical, showsIndicators: false) {
+                HistoryView(viewModel: viewModel.history)
+            }
             AboutView().padding(.bottom, 12)
             FooterView()
         }.fill().padding(Style.Insets.base).background(Style.Color.background)
@@ -60,15 +60,12 @@ extension ProfileView {
             .padding(.all, 12)
             .background(Style.Color.lightGray)
     }
-    private var history: some View {
-        VStack(spacing: 12) {
-            Text(viewModel.historyTitle)
-                .font(Style.Font.font(style: .headline))
-                .foregroundColor(Style.Color.black)
-                .kerning(0.5)
-                .multilineTextAlignment(.center)
-            HistoryView(viewModel: viewModel.history)
-        }
+    private var historyTitle: some View {
+        Text(viewModel.historyTitle)
+            .font(Style.Font.font(style: .headline))
+            .foregroundColor(Style.Color.black)
+            .kerning(0.5)
+            .multilineTextAlignment(.center)
     }
 }
 
