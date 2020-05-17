@@ -51,4 +51,10 @@ extension User {
     static var 🐯: User { User(name: "Tiger", avatar: "🐯") }
     static var 🦖: User { User(name: "T-Rex", avatar: "🦖") }
     static var 🦄: User { User(name: "Unicorn", avatar: "🦄") }
+    static var 🐗: User { User(name: "Boar", avatar: "🐗" ) }
+    static var 🦒: User { User(name: "Giraffe", avatar: "🦒" ) }
+    static var 🦉: User { User(name: "Owl", avatar: "🦉" ) }
+    static var 🦈: User { User(name: "Shark", avatar: "🦈" ) }
+    static var 🐙: User { User(name: "Octopus", avatar: "🐙" ) }
+    static var 🐮: User { User(name: "Cow Face", avatar: "🐮" ) }
 }

@@ -31,7 +31,7 @@ final class PhotoViewModel: ObservableObject {
     func tossADice() {
         let users: [User] = [
             .👽, .🐻, .🐱, .🐔, .🐶, .🐲, .🦊, .👻, .🐨, .🦁, .🐵, .🐼, .🐷,
-            .💩, .🐰, .🤖, .💀, .🐯, .🦖, .🦄
+            .💩, .🐰, .🤖, .💀, .🐯, .🦖, .🦄, .🐗, .🦒, .🦉, .🦈, .🐙, .🐮
         ]
         guard let user = users.randomElement() else { return }
         builder.name = user.name
