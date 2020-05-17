@@ -17,7 +17,7 @@ struct LaunchView: View {
         VStack(alignment: .center, spacing: 32) {
             Spacer()
             PhotoView().frame(width: 200)
-            HelloView().frame(width: 400)
+            HelloView(viewModel: viewModel.hello).frame(width: 400)
             Spacer()
             beginButton
         }.fill().padding(Style.Insets.base).background(Style.Color.background)

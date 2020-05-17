@@ -10,6 +10,8 @@ import Foundation
 
 final class LaunchViewModel: ObservableObject {
     
-    
+    var hello: HelloViewModel {
+        HelloViewModel()
+    }
     
 }
