@@ -20,6 +20,7 @@ struct LaunchView: View {
             HelloView(viewModel: viewModel.hello).frame(width: 400)
             Spacer()
             beginButton
+            Spacer()
         }.fill().padding(Style.Insets.base).background(Style.Color.background)
     }
     
