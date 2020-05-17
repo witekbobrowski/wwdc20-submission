@@ -8,6 +8,12 @@
 
 final class AffirmationsViewModel {
     
+    private let store: Store
+    
     var title: String { Exercise.affirmations.title.capitalized }
+    
+    init(store: Store) {
+        self.store = store
+    }
     
 }

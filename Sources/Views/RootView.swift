@@ -11,25 +11,26 @@ import SwiftUI
 struct RootView: View {
     
     @EnvironmentObject var router: Router
+    @EnvironmentObject var store: Store
     
     var body: some View {
         ZStack {
             if router.current == .launch {
-                LaunchView(viewModel: LaunchViewModel())
+                LaunchView(viewModel: LaunchViewModel(store: store))
                     .transition(.move(edge: .bottom))
             } else if router.current == .dashboard() {
-                DashboardView(viewModel: DashboardViewModel())
+                DashboardView(viewModel: DashboardViewModel(store: store))
             } else if router.current == .dashboard(.exercise(.emotions)) {
-                EmotionsView(viewModel: EmotionsViewModel())
+                EmotionsView(viewModel: EmotionsViewModel(store: store))
                     .transition(.move(edge: .bottom))
             } else if router.current == .dashboard(.exercise(.drawing)) {
-                DrawingView(viewModel: DrawingViewModel())
+                DrawingView(viewModel: DrawingViewModel(store: store))
                     .transition(.move(edge: .bottom))
             } else if router.current == .dashboard(.exercise(.affirmations)) {
-                AffirmationsView(viewModel: AffirmationsViewModel())
+                AffirmationsView(viewModel: AffirmationsViewModel(store: store))
                     .transition(.move(edge: .bottom))
             } else if router.current == .dashboard(.exercise(.gratitude)) {
-                GratitudeView(viewModel: GratitudeViewModel())
+                GratitudeView(viewModel: GratitudeViewModel(store: store))
                     .transition(.move(edge: .bottom))
             }
         }.animation(.easeInOut(duration: 0.3))

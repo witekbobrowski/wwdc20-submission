@@ -16,6 +16,10 @@ class Router: ObservableObject {
         case exercise(Exercise)
     }
     
-    @Published var current: Path = .launch
+    @Published var current: Path
+    
+    init(initial path: Path = .launch) {
+        current = path
+    }
     
 }

@@ -10,18 +10,15 @@ import SwiftUI
 
 final class DashboardViewModel {
     
-    private let user: User
+    private let store: Store
     
-    var title: String { "Hello, \(user.name)!" }
+    var title: String { "Hello, \(store.user.name)!" }
     var exercises: ExercisesViewModel {
-        ExercisesViewModel(user: user)
-    }
-    var emotions: EmotionsViewModel {
-        EmotionsViewModel(user: user)
+        ExercisesViewModel(user: store.user)
     }
     
-    init(user: User = .current) {
-        self.user = user
+    init(store: Store) {
+        self.store = store
     }
     
 }

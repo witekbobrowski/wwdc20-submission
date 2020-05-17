@@ -12,9 +12,7 @@ final class ExercisesViewModel {
     
     private let user: User
     
-    var emotions: EmotionsViewModel { EmotionsViewModel(user: user) }
-    
-    init(user: User = .current) {
+    init(user: User = .mock) {
         self.user = user
     }
     

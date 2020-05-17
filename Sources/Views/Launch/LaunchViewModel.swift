@@ -11,15 +11,17 @@ import Foundation
 final class LaunchViewModel: ObservableObject {
     
     private let builder: UserBuilder
+    private let store: Store
     
     var hello: HelloViewModel { HelloViewModel(builder: builder) }
     
-    init(builder: UserBuilder = UserBuilder()) {
+    init(builder: UserBuilder = UserBuilder(), store: Store) {
         self.builder = builder
+        self.store = store
     }
     
     func save() {
-        print(builder.build())
+        builder.build().map(store.save)
     }
     
 }

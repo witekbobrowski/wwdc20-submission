@@ -47,6 +47,6 @@ extension LaunchView {
 
 struct LaunchView_Previews: PreviewProvider {
     static var previews: some View {
-        LaunchView(viewModel: LaunchViewModel())
+        LaunchView(viewModel: LaunchViewModel(store: Store()))
     }
 }

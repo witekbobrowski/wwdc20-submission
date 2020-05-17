@@ -24,15 +24,11 @@ struct DashboardView: View  {
         }.fill().padding(Style.Insets.base).background(Style.Color.background)
     }
     
-    private func destination(for exercise: Exercise?) -> some View {
-        return EmotionsView(viewModel: EmotionsViewModel())
-    }
-    
 }
 
 struct DashboardView_Previews: PreviewProvider {
     static var previews: some View {
-        DashboardView(viewModel: DashboardViewModel())
+        DashboardView(viewModel: DashboardViewModel(store: Store()))
             .environmentObject(Router())
     }
 }

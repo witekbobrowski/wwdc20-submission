@@ -22,6 +22,6 @@ struct AffirmationsView: View {
 
 struct AffirmationsView_Previews: PreviewProvider {
     static var previews: some View {
-        AffirmationsView(viewModel: AffirmationsViewModel())
+        AffirmationsView(viewModel: AffirmationsViewModel(store: Store()))
     }
 }

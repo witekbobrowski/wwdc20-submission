@@ -10,15 +10,17 @@ import Foundation
 
 final class DrawingViewModel: ObservableObject {
     
-    let builder: DrawingBuilder
+    private let builder: DrawingBuilder
+    private let store: Store
     
     var title: String { Exercise.drawing.title.capitalized }
     
     @Published var emotion: Emotion { didSet { builder.emotion = emotion } }
     @Published var strokes: [Stroke] { didSet { builder.strokes = strokes } }
     
-    init(builder: DrawingBuilder = DrawingBuilder()) {
+    init(builder: DrawingBuilder = DrawingBuilder(), store: Store) {
         self.builder = builder
+        self.store = store
         if builder.timestamp == nil { builder.timestamp = Date() }
         if builder.emotion == nil { builder.emotion = .random }
         self.emotion = builder.emotion ?? .random
@@ -26,7 +28,7 @@ final class DrawingViewModel: ObservableObject {
     }
     
     func save() {
-        print(builder.build())
+        builder.build().map(store.save)
     }
     
 }

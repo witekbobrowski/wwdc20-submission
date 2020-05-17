@@ -20,7 +20,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Create the SwiftUI view that provides the window contents.
         let router = Router()
-        let root = RootView().environmentObject(router)
+        let store = Store()
+        let root = RootView()
+            .environmentObject(router)
+            .environmentObject(store)
         let hostingController = UIHostingController(rootView: root)
         hostingController.view.backgroundColor = Style.Color.background.uiColor
 

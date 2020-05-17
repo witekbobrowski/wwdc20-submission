@@ -10,8 +10,8 @@ import SwiftUI
 
 final class EmotionsViewModel: ObservableObject {
     
-    private let user: User
     private let builder: EmotionsBuilder
+    private let store: Store
     
     @Published private var emotions = [Emotion: Int]()
     
@@ -23,14 +23,14 @@ final class EmotionsViewModel: ObservableObject {
         RotationViewModel()
     }
     
-    init(user: User = User(name: "Witek"), builder: EmotionsBuilder = EmotionsBuilder()) {
-        self.user = user
+    init(builder: EmotionsBuilder = EmotionsBuilder(), store: Store) {
         self.builder = builder
+        self.store = store
         if builder.timestamp == nil { builder.timestamp = Date() }
     }
     
     func save() {
-        print(builder.emotions)
+        builder.build().map(store.save)
     }
     
 }

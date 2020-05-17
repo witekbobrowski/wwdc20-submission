@@ -59,7 +59,7 @@ extension EmotionsView {
 
 struct EmotionsView_Previews: PreviewProvider {
     static var previews: some View {
-        EmotionsView(viewModel: EmotionsViewModel())
+        EmotionsView(viewModel: EmotionsViewModel(store: Store()))
             .environmentObject(Router())
     }
 }

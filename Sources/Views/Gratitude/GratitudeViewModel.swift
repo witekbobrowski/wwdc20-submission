@@ -11,6 +11,7 @@ import Foundation
 final class GratitudeViewModel: ObservableObject {
     
     private let builder: GratitudeBuilder
+    private let store: Store
     
     var title: String { Exercise.gratitude.title.capitalized }
     
@@ -25,8 +26,9 @@ final class GratitudeViewModel: ObservableObject {
     @Published var reason: String { didSet { builder.reason = reason } }
     @Published var action: String { didSet { builder.action = action } }
     
-    init(builder: GratitudeBuilder = GratitudeBuilder()) {
+    init(builder: GratitudeBuilder = GratitudeBuilder(), store: Store) {
         self.builder = builder
+        self.store = store
         self.person = builder.person ?? ""
         self.reason = builder.reason ?? ""
         self.action = builder.action ?? ""
@@ -34,7 +36,7 @@ final class GratitudeViewModel: ObservableObject {
     }
     
     func save() {
-        print(builder.build())
+        builder.build().map(store.save)
     }
     
 }

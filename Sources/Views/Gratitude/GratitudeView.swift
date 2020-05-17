@@ -77,7 +77,7 @@ extension GratitudeView {
 
 struct GratitudeView_Previews: PreviewProvider {
     static var previews: some View {
-        GratitudeView(viewModel: GratitudeViewModel())
+        GratitudeView(viewModel: GratitudeViewModel(store: Store()))
             .environmentObject(Router())
     }
 }

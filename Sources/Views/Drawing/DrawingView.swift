@@ -63,7 +63,7 @@ extension DrawingView {
 
 struct DrawingView_Previews: PreviewProvider {
     static var previews: some View {
-        DrawingView(viewModel: DrawingViewModel())
+        DrawingView(viewModel: DrawingViewModel(store: Store()))
             .environmentObject(Router())
     }
 }
