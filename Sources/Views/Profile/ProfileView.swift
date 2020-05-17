@@ -15,11 +15,12 @@ struct ProfileView: View {
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
             HeaderView(title: viewModel.title)
-            profile.padding(.top, 24).padding(.bottom, 12)
-            if !viewModel.history.items.isEmpty {
-                historyTitle.padding(.bottom, 12)
-            }
+            profile.padding(.top, 24).padding(.bottom, 64)
+            historyTitle.padding(.bottom, 12)
             ScrollView(.vertical, showsIndicators: false) {
+                if viewModel.history.items.isEmpty {
+                    Text("~")
+                }
                 HistoryView(viewModel: viewModel.history)
             }
             FooterView()
