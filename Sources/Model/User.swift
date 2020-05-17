@@ -12,6 +12,15 @@ struct User {
     let name: String
 }
 
+final class UserBuilder {
+    var name: String?
+    
+    func build() -> User? {
+        guard let name = name else { return nil }
+        return User(name: name)
+    }
+}
+
 extension User {
     static var current: User {
         User(name: "Witek")

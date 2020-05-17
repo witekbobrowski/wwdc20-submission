@@ -24,6 +24,7 @@ struct LaunchView: View {
     }
     
     private func begin() {
+        viewModel.save()
         router.current = .dashboard()
     }
 

@@ -8,10 +8,22 @@
 
 import Foundation
 
-final class HelloViewModel {
+final class HelloViewModel: ObservableObject {
+    
+    private let builder: UserBuilder
     
     var title: String { "hello" }
     var subtitle: String { "MY NAME IS" }
     var placeholder: String { "type your name :)" }
     var footer: String { "WWDC20" }
+    
+    var name: String {
+        get { builder.name ?? "" }
+        set { builder.name = newValue }
+    }
+    
+    init(builder: UserBuilder = UserBuilder()) {
+        self.builder = builder
+    }
+    
 }

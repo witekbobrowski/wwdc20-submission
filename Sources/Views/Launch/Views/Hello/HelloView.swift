@@ -10,7 +10,7 @@ import SwiftUI
 
 struct HelloView: View {
     
-    var viewModel: HelloViewModel
+    @ObservedObject var viewModel: HelloViewModel
     
     @State var name = ""
     
@@ -22,6 +22,10 @@ struct HelloView: View {
         }.background(Style.Color.background)
             .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
             .shadow(radius: 24)
+    }
+    
+    init(viewModel: HelloViewModel) {
+        self.viewModel = viewModel
     }
     
 }

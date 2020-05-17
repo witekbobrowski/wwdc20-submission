@@ -10,8 +10,16 @@ import Foundation
 
 final class LaunchViewModel: ObservableObject {
     
-    var hello: HelloViewModel {
-        HelloViewModel()
+    private let builder: UserBuilder
+    
+    var hello: HelloViewModel { HelloViewModel(builder: builder) }
+    
+    init(builder: UserBuilder = UserBuilder()) {
+        self.builder = builder
+    }
+    
+    func save() {
+        print(builder.build())
     }
     
 }

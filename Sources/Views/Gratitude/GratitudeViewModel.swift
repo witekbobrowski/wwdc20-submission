@@ -23,6 +23,11 @@ final class GratitudeViewModel {
     
     init(builder: GratitudeBuilder = GratitudeBuilder()) {
         self.builder = builder
+        if builder.timestamp == nil { builder.timestamp = Date() }
+    }
+    
+    func save() {
+        print(builder.build())
     }
     
 }

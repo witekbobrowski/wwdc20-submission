@@ -19,7 +19,7 @@ struct GratitudeView: View {
         didSet { viewModel.builder.reason = reason }
     }
     @State private var action = "" {
-        didSet { viewModel.builder.reason = reason }
+        didSet { viewModel.builder.reason = action }
     }
     
     var body: some View {
@@ -38,9 +38,9 @@ struct GratitudeView: View {
                 .fill()
                 .aspectRatio(1, contentMode: .fit)
                 .background(Color.white)
-                .shadow(color: Style.Color.lightGray, radius: 32, x: 0, y: 0)
                 .padding(EdgeInsets(top: 24, leading: 64, bottom: 24, trailing: 64))
             Spacer()
+            controls
             FooterView()
         }.fill().padding(Style.Insets.base).background(Style.Color.background)
     }
@@ -76,6 +76,19 @@ extension GratitudeView {
             placeholder: viewModel.actionPlaceholder,
             answer: $action
         )
+    }
+    private var controls: some View {
+        ZStack {
+            Button(action: viewModel.save) {
+                Text("Continue")
+                    .font(Style.Font.font(style: .headline))
+                    .foregroundColor(.white)
+                    .bold()
+                    .padding(EdgeInsets(top: 8, leading: 32, bottom: 8, trailing: 32))
+                    .background(Style.Color.black)
+                    .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+            }
+        }.padding(.all, 12)
     }
 }
 
