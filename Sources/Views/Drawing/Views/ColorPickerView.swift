@@ -13,7 +13,7 @@ struct ColorPickerView: View {
     @Binding var selected: Color
     
     private var colors: [Color] {
-        [Style.Color.black, Style.Color.lightGray, Style.Color.red, Style.Color.green, Style.Color.blue, Style.Color.purple]
+        [Style.Color.black, .white, .gray, .red, .green, .blue, .orange, .purple]
     }
     
     var body: some View {
