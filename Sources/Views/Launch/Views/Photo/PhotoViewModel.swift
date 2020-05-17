@@ -15,11 +15,11 @@ final class PhotoViewModel: ObservableObject {
     var placeholder: String { "person.fill" }
     var camera: String { "camera.fill" }
     
-    @Published var image: UIImage? { didSet { builder.avatar = image } }
+    @Published var avatar: String? { didSet { builder.avatar = avatar } }
     
     init(builder: UserBuilder = UserBuilder()) {
         self.builder = builder
-        self.image = builder.avatar
+        self.avatar = builder.avatar
     }
     
 }

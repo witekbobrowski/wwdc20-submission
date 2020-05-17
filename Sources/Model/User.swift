@@ -10,12 +10,12 @@ import UIKit
 
 struct User {
     let name: String
-    let avatar: UIImage?
+    let avatar: String?
 }
 
 final class UserBuilder {
     var name: String?
-    var avatar: UIImage?
+    var avatar: String?
     
     func build() -> User? {
         guard let name = name else { return nil }
@@ -25,6 +25,6 @@ final class UserBuilder {
 
 extension User {
     static var mock: User {
-        User(name: "Witek", avatar: UIImage(named: "avatar"))
+        User(name: "Witek", avatar: "👨🏻‍💻")
     }
 }

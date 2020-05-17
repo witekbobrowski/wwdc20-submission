@@ -14,7 +14,7 @@ final class ProfileViewModel {
     
     var title: String { "Your Profile" }
     
-    var avatar: UIImage? { store.user.avatar }
+    var avatar: String? { store.user.avatar }
     var name: String { store.user.name }
     
     var historyTitle: String { "History" }

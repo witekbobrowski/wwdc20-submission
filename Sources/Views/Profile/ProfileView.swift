@@ -54,11 +54,12 @@ extension ProfileView {
             .background(Style.Color.black)
     }
     private var avatar: some View {
-        Image(uiImage: viewModel.avatar!)
-            .resizable()
-            .foregroundColor(.white)
-            .padding(.all, 12)
-            .background(Style.Color.lightGray)
+        viewModel.avatar.map { avatar in
+            Text(avatar)
+                .font(.system(size: 64))
+                .padding(.all, 32)
+                .background(Style.Color.lightGray)
+        }
     }
     private var historyTitle: some View {
         Text(viewModel.historyTitle)

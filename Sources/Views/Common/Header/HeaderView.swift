@@ -66,11 +66,13 @@ extension HeaderView {
             .background(Style.Color.black)
     }
     private var avatar: some View {
-        Image(uiImage: store.user.avatar!)
-            .resizable()
-            .foregroundColor(.white)
-            .padding(.all, 6)
-            .background(Style.Color.lightGray)
+        store.user.avatar.map { avatar in
+            Text(avatar)
+                .font(.system(size: 48))
+                .foregroundColor(.white)
+                .padding(.all, 8)
+                .background(Style.Color.lightGray)
+        }
     }
 }
 

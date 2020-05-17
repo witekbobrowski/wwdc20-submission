@@ -14,7 +14,7 @@ struct PhotoView: View {
     
     var body: some View {
         ZStack(alignment: .center) {
-            if viewModel.image == nil { placeholder } else { avatar }
+            if viewModel.avatar == nil { placeholder } else { avatar }
             GeometryReader { geometry in
                 HStack {
                     Spacer()
@@ -49,12 +49,13 @@ extension PhotoView {
     }
     private var avatar: some View {
         Group {
-            viewModel.image.map { image in
-                Image(uiImage: image)
-                    .resizable()
+            viewModel.avatar.map { avatar in
+                Text(avatar)
+                    .padding(.all, 64)
                     .background(Style.Color.lightGray)
                     .clipShape(Circle())
                     .shadow(color: Style.Color.lightGray, radius: 24)
+                    .fill()
                 }
             }
         }
