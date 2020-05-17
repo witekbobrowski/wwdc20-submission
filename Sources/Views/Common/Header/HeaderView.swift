@@ -40,11 +40,7 @@ extension HeaderView {
     private var profile: some View {
         Button(action: { self.router.current = .profile }) {
             ZStack {
-//                if store.user.avatar == nil {
-                    placeholder
-//                } else {
-                    avatar
-//                }
+                if store.user.avatar == nil { placeholder } else { avatar }
             }
                 .clipShape(Circle())
                 .shadow(color: Style.Color.lightGray, radius: 4)

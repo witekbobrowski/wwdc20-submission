@@ -22,4 +22,14 @@ final class PhotoViewModel: ObservableObject {
         self.avatar = builder.avatar
     }
     
+    func tossADice() {
+        let users: [User] = [
+            .👽, .🐻, .🐱, .🐔, .🐶, .🐲, .🦊, .👻, .🐨, .🦁, .🐵, .🐼, .🐷,
+            .💩, .🐰, .🤖, .💀, .🐯, .🦖, .🦄
+        ]
+        guard let random = users.randomElement() else { return }
+        builder.name = random.name
+        avatar = random.avatar
+    }
+    
 }

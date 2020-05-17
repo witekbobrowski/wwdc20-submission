@@ -14,20 +14,22 @@ struct PhotoView: View {
     
     var body: some View {
         ZStack(alignment: .center) {
-            if viewModel.avatar == nil { placeholder } else { avatar }
+            Group {
+                if viewModel.avatar == nil { placeholder } else { avatar }
+            }.clipShape(Circle())
             GeometryReader { geometry in
                 HStack {
                     Spacer()
                     VStack {
                         Spacer()
-                        self.camera
-                            .padding(.all, 12)
-                            .frame(width: geometry.size.width/4.20, height: geometry.size.height/4)
+                        ZStack {
+                            self.camera
+                        }
+                            .frame(width: geometry.size.width/4, height: geometry.size.height/4)
                             .hoverEffect(.lift)
                             .background(Color.white)
                             .clipShape(Circle())
                             .shadow(radius: 8)
-                        
                     }
                 }.fill()
             }
@@ -42,7 +44,7 @@ extension PhotoView {
         Image(systemName: viewModel.placeholder)
             .resizable()
             .foregroundColor(.white)
-            .padding(.all, 64)
+            .padding(.all, 48)
             .background(Style.Color.black)
             .clipShape(Circle())
             .shadow(color: Style.Color.lightGray, radius: 24)
@@ -51,18 +53,16 @@ extension PhotoView {
         Group {
             viewModel.avatar.map { avatar in
                 Text(avatar)
-                    .padding(.all, 64)
-                    .background(Style.Color.lightGray)
-                    .clipShape(Circle())
+                    .font(.system(size: 64))
                     .shadow(color: Style.Color.lightGray, radius: 24)
                     .fill()
-                }
+                }.background(Style.Color.lightGray)
             }
         }
     private var camera: some View {
-        Button(action: {}) {
-            Image(systemName: viewModel.camera)
-                .resizable()
+        Button(action: viewModel.tossADice) {
+            Text("🎲")
+                .font(.system(size: 20))
                 .scaledToFit()
                 .foregroundColor(Style.Color.black)
         }
@@ -71,6 +71,8 @@ extension PhotoView {
 
 struct PhotoView_Previews: PreviewProvider {
     static var previews: some View {
-        PhotoView(viewModel: PhotoViewModel()).frame(width: 200)
+        let builder = UserBuilder()
+        builder.avatar = "👽"
+        return PhotoView(viewModel: PhotoViewModel(builder: builder)).frame(width: 150)
     }
 }
