@@ -10,28 +10,9 @@ import SwiftUI
 
 struct PhotoView: View {
     
-    private var placeholder: some View {
-        Image(systemName: "person.fill")
-            .resizable()
-            .foregroundColor(.white)
-    }
-    
-    private var camera: some View {
-        Button(action: {}) {
-            Image(systemName: "camera.fill")
-                .resizable()
-                .scaledToFit()
-                .foregroundColor(Style.Color.black)
-        }
-    }
-    
     var body: some View {
-        ZStack {
-            placeholder
-                .padding(.all, 64)
-                .background(Style.Color.black)
-                .clipShape(Circle())
-                .shadow(radius: 24)
+        ZStack(alignment: .center) {
+            avatar
             GeometryReader { geometry in
                 HStack {
                     Spacer()
@@ -49,6 +30,36 @@ struct PhotoView: View {
                 }.fill()
             }
         }.aspectRatio(1, contentMode: .fit)
+    }
+}
+
+// MARK: - Subviews
+extension PhotoView {
+    private var placeholder: some View {
+        Image(systemName: "person.fill")
+            .resizable()
+            .foregroundColor(.white)
+            .padding(.all, 64)
+            .background(Style.Color.black)
+            .clipShape(Circle())
+            .shadow(color: Style.Color.lightGray, radius: 24)
+    }
+    private var avatar: some View {
+        Image("avatar")
+            .resizable()
+            .foregroundColor(.white)
+            .padding(.all, 24)
+            .background(Style.Color.lightGray)
+            .clipShape(Circle())
+            .shadow(color: Style.Color.lightGray, radius: 24)
+    }
+    private var camera: some View {
+        Button(action: {}) {
+            Image(systemName: "camera.fill")
+                .resizable()
+                .scaledToFit()
+                .foregroundColor(Style.Color.black)
+        }
     }
 }
 
