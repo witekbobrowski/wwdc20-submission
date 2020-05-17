@@ -18,19 +18,28 @@ struct RootView: View {
             if router.current == .launch {
                 LaunchView(viewModel: LaunchViewModel(store: store))
                     .transition(.move(edge: .bottom))
+                
             } else if router.current == .dashboard() {
                 DashboardView(viewModel: DashboardViewModel(store: store))
+                
             } else if router.current == .dashboard(.exercise(.emotions)) {
                 EmotionsView(viewModel: EmotionsViewModel(store: store))
                     .transition(.move(edge: .bottom))
+                
             } else if router.current == .dashboard(.exercise(.drawing)) {
                 DrawingView(viewModel: DrawingViewModel(store: store))
                     .transition(.move(edge: .bottom))
+                
             } else if router.current == .dashboard(.exercise(.affirmations)) {
                 AffirmationsView(viewModel: AffirmationsViewModel(store: store))
                     .transition(.move(edge: .bottom))
+                
             } else if router.current == .dashboard(.exercise(.gratitude)) {
                 GratitudeView(viewModel: GratitudeViewModel(store: store))
+                    .transition(.move(edge: .bottom))
+                
+            } else if router.current == .profile {
+                ProfileView(viewModel: ProfileViewModel(store: store))
                     .transition(.move(edge: .bottom))
             }
         }.animation(.easeInOut(duration: 0.3))

@@ -14,6 +14,7 @@ class Router: ObservableObject {
         case launch
         indirect case dashboard(Path? = nil)
         case exercise(Exercise)
+        case profile
     }
     
     @Published var current: Path

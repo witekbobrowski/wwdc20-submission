@@ -37,7 +37,7 @@ extension HeaderView {
             .multilineTextAlignment(.center)
     }
     private var profile: some View {
-        Button(action: {  }) {
+        Button(action: { self.router.current = .profile }) {
             Group {
                 if store.user.avatar == nil {
                     placeholder
