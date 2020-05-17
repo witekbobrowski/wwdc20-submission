@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct Drawing {
+    let uuid: UUID
     let timestamp: Date
     let emotion: Emotion
     let strokes: [Stroke]
@@ -20,13 +21,19 @@ struct Stroke {
 }
 
 final class DrawingBuilder {
+    var uuid: UUID?
     var timestamp: Date?
     var emotion: Emotion?
     var strokes = [Stroke]()
     
     func build() -> Drawing? {
         guard let timestamp = timestamp, let emotion = emotion else { return nil }
-        return Drawing(timestamp: timestamp, emotion: emotion, strokes: strokes)
+        return Drawing(
+            uuid: uuid ?? UUID(),
+            timestamp: timestamp,
+            emotion: emotion,
+            strokes: strokes
+        )
     }
 }
 

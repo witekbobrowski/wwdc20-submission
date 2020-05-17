@@ -68,6 +68,7 @@ public struct RootView: View {
         if let path = exercise(from: path) {
             if case .emotions(let emotions) = path {
                 let builder = EmotionsBuilder()
+                builder.uuid = emotions?.uuid
                 builder.timestamp = emotions?.timestamp
                 builder.emotions = emotions?.emotions ?? [:]
                 return builder
@@ -80,6 +81,7 @@ public struct RootView: View {
         if let path = exercise(from: path) {
             if case .drawing(let drawing) = path {
                 let builder = DrawingBuilder()
+                builder.uuid = drawing?.uuid
                 builder.timestamp = drawing?.timestamp
                 builder.emotion = drawing?.emotion
                 builder.strokes = drawing?.strokes ?? []
@@ -93,6 +95,7 @@ public struct RootView: View {
         if let path = exercise(from: path) {
             if case .gratitude(let gratitude) = path {
                 let builder = GratitudeBuilder()
+                builder.uuid = gratitude?.uuid
                 builder.timestamp = gratitude?.timestamp
                 builder.person = gratitude?.person
                 builder.reason = gratitude?.reason

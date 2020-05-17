@@ -81,9 +81,9 @@ final class HistoryViewModel {
     
     private func buildItems() -> [Item] {
         var items = [Item]()
-        items.append(contentsOf: store.emotions.map { .emotions($0) })
-        items.append(contentsOf: store.drawings.map { .drawing($0) })
-        items.append(contentsOf: store.gratitudes.map { .gratitude($0) })
+        items.append(contentsOf: store.emotions.values.map { .emotions($0) })
+        items.append(contentsOf: store.drawings.values.map { .drawing($0) })
+        items.append(contentsOf: store.gratitudes.values.map { .gratitude($0) })
         return items.sorted { $0.timestamp > $1.timestamp }
     }
     

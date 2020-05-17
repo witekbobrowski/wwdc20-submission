@@ -9,6 +9,7 @@
 import Foundation
 
 struct Gratitude {
+    let uuid: UUID
     let timestamp: Date
     let person: String?
     let reason: String?
@@ -16,6 +17,7 @@ struct Gratitude {
 }
 
 final class GratitudeBuilder {
+    var uuid: UUID?
     var timestamp: Date?
     var person: String?
     var reason: String?
@@ -24,6 +26,7 @@ final class GratitudeBuilder {
     func build() -> Gratitude? {
         guard let timestamp = timestamp else { return nil }
         return Gratitude(
+            uuid: uuid ?? UUID(),
             timestamp: timestamp,
             person: person,
             reason: reason,

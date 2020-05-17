@@ -11,9 +11,9 @@ import Foundation
 final class Store: ObservableObject {
     
     private (set) var user: User = .mock
-    private (set) var emotions = [EmotionsLog]()
-    private (set) var drawings = [Drawing]()
-    private (set) var gratitudes = [Gratitude]()
+    private (set) var emotions = [UUID: EmotionsLog]()
+    private (set) var drawings = [UUID: Drawing]()
+    private (set) var gratitudes = [UUID: Gratitude]()
     
 }
 
@@ -24,13 +24,13 @@ extension Store {
         self.user = user
     }
     func save(_ item: EmotionsLog) {
-        emotions.append(item)
+        emotions[item.uuid] = item
     }
     func save(_ item: Drawing) {
-        drawings.append(item)
+        drawings[item.uuid] = item
     }
     func save(_ item: Gratitude) {
-        gratitudes.append(item)
+        gratitudes[item.uuid] = item
     }
     
 }
@@ -40,8 +40,8 @@ extension Store {
     static var mock: Store {
         let store = Store()
         store.save(.mock)
-        store.save(EmotionsLog(timestamp: Date(), emotions: [.anger: 1]))
-        store.save(Drawing(timestamp: Date().addingTimeInterval(-360), emotion: .anger, strokes: []))
+        store.save(EmotionsLog(uuid: UUID(), timestamp: Date(), emotions: [.anger: 1]))
+        store.save(Drawing(uuid: UUID(), timestamp: Date().addingTimeInterval(-360), emotion: .anger, strokes: []))
         return store
     }
 }
