@@ -13,8 +13,14 @@ final class LaunchViewModel: ObservableObject {
     private let builder: UserBuilder
     private let store: Store
     
-    var photo: PhotoViewModel { PhotoViewModel(builder: builder) }
-    var hello: HelloViewModel { HelloViewModel(builder: builder) }
+    private(set) lazy var photo: PhotoViewModel = {
+        let viewModel = PhotoViewModel(builder: builder)
+        viewModel.delegate = hello
+        return viewModel
+    }()
+    private(set) lazy var hello: HelloViewModel = {
+        HelloViewModel(builder: builder)
+    }()
     
     init(builder: UserBuilder = UserBuilder(), store: Store) {
         self.builder = builder

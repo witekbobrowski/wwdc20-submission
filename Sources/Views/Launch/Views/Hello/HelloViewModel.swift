@@ -25,3 +25,9 @@ final class HelloViewModel: ObservableObject {
     }
     
 }
+
+extension HelloViewModel: PhotoViewModelDelegate {
+    func didSet(new user: User) {
+        name = builder.name ?? ""
+    }
+}

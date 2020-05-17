@@ -61,7 +61,7 @@ extension PhotoView {
         }
     private var camera: some View {
         Button(action: viewModel.tossADice) {
-            Text("🎲")
+            Text(viewModel.dice)
                 .font(.system(size: 20))
                 .scaledToFit()
                 .foregroundColor(Style.Color.black)

@@ -8,12 +8,18 @@
 
 import UIKit
 
+protocol PhotoViewModelDelegate: class {
+    func didSet(new user: User)
+}
+
 final class PhotoViewModel: ObservableObject {
     
     private let builder: UserBuilder
     
+    weak var delegate: PhotoViewModelDelegate?
+    
     var placeholder: String { "person.fill" }
-    var camera: String { "camera.fill" }
+    var dice: String { "🎲" }
     
     @Published var avatar: String? { didSet { builder.avatar = avatar } }
     
@@ -27,9 +33,10 @@ final class PhotoViewModel: ObservableObject {
             .👽, .🐻, .🐱, .🐔, .🐶, .🐲, .🦊, .👻, .🐨, .🦁, .🐵, .🐼, .🐷,
             .💩, .🐰, .🤖, .💀, .🐯, .🦖, .🦄
         ]
-        guard let random = users.randomElement() else { return }
-        builder.name = random.name
-        avatar = random.avatar
+        guard let user = users.randomElement() else { return }
+        builder.name = user.name
+        avatar = user.avatar
+        delegate?.didSet(new: user)
     }
     
 }
