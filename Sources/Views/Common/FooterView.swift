@@ -21,7 +21,7 @@ struct FooterView: View {
             .fillHorizontally()
     }
     
-    init(title: String = "WWDC20") {
+    init(title: String = Strings.footer) {
         self.title = title
     }
     

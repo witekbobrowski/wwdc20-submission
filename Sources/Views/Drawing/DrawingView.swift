@@ -62,7 +62,7 @@ extension DrawingView {
                 }.foregroundColor(Color(white: 0.2)).padding(.trailing, 12)
             }
             Button(action: viewModel.save) {
-                Text("Continue")
+                Text(Strings.continue)
                     .font(Style.Font.font(style: .headline))
                     .foregroundColor(.white)
                     .bold()

@@ -44,7 +44,7 @@ extension EmotionsView {
                 Spacer()
             }
             Button(action: viewModel.save) {
-                Text("Continue")
+                Text(Strings.continue)
                     .font(Style.Font.font(style: .headline))
                     .foregroundColor(.white)
                     .bold()

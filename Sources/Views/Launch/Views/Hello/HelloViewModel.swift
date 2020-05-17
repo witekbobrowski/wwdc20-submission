@@ -15,7 +15,7 @@ final class HelloViewModel: ObservableObject {
     var title: String { "hello" }
     var subtitle: String { "MY NAME IS" }
     var placeholder: String { "type your name :)" }
-    var footer: String { "WWDC20" }
+    var footer: String { Strings.footer }
     
     var name: String {
         get { builder.name ?? "" }
