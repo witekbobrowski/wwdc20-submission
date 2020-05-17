@@ -22,6 +22,7 @@ enum Emotion: String, CaseIterable {
 }
 
 extension Emotion {
+    static var random: Emotion { Self.allCases.randomElement()! }
     var emoji: String {
         switch self {
         case .sadness: return "😞"

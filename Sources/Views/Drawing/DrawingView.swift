@@ -10,21 +10,15 @@ import SwiftUI
 
 struct DrawingView: View {
     
-    var viewModel: DrawingViewModel
+    @ObservedObject var viewModel: DrawingViewModel
     
-    @State var strokes: [Stroke] = [] {
-        didSet { viewModel.builder.strokes = strokes }
-    }
-    @State var emotion: Emotion = .anger {
-        didSet { viewModel.builder.emotion = emotion }
-    }
     @State var color: Color = .black
     
     var body: some View {
         VStack(spacing: 0) {
             HeaderView(title: viewModel.title)
             Spacer(minLength: 12)
-            DrawingTitleView(emotion: $emotion)
+            DrawingTitleView(emotion: $viewModel.emotion)
             Spacer(minLength: 12)
             canvas
             controls
@@ -32,19 +26,12 @@ struct DrawingView: View {
         }.fill().padding(Style.Insets.base).background(Style.Color.background)
     }
     
-    init(viewModel: DrawingViewModel) {
-        self.viewModel = viewModel
-        self.emotion = viewModel.builder.emotion ?? .fear
-        self.strokes = viewModel.builder.strokes
-        self.color = Style.Color.black
-    }
-    
 }
 
 // MARK: - Subviews
 extension DrawingView {
     private var canvas: some View {
-        CanvasView(strokes: $strokes, color: $color)
+        CanvasView(strokes: $viewModel.strokes, color: $color)
             .aspectRatio(1, contentMode: .fit)
             .shadow(color: Style.Color.lightGray, radius: 32, x: 0, y: 0)
     }
@@ -56,7 +43,7 @@ extension DrawingView {
             }
             HStack {
                 Spacer()
-                Button(action: { self.emotion = Emotion.allCases.randomElement()! }) {
+                Button(action: { self.viewModel.emotion = .random }) {
                     Text("🎲 try different emotion")
                         .font(Style.Font.font(style: .footnote))
                 }.foregroundColor(Color(white: 0.2)).padding(.trailing, 12)
