@@ -45,10 +45,9 @@ extension HeaderView {
                     avatar
                 }
             }
-                .frame(width: 48, height: 48, alignment: .center)
                 .clipShape(Circle())
                 .shadow(color: Style.Color.lightGray, radius: 4)
-        }
+        }.frame(width: 64, height: 64, alignment: .center)
     }
     private var close: some View {
         Button(action: { self.router.current = .dashboard() }) {
@@ -62,14 +61,14 @@ extension HeaderView {
         Image(systemName: "person.fill")
             .resizable()
             .foregroundColor(.white)
-            .padding(.all, 4)
+            .padding(.all, 16)
             .background(Style.Color.black)
     }
     private var avatar: some View {
         Image(uiImage: store.user.avatar!)
             .resizable()
             .foregroundColor(.white)
-            .padding(.all, 4)
+            .padding(.all, 6)
             .background(Style.Color.lightGray)
     }
 }
@@ -80,5 +79,6 @@ struct HeaderView_Previews: PreviewProvider {
         return HeaderView(title: "Hello, \(store.user.name)!")
             .environmentObject(Router(initial: .dashboard()))
             .environmentObject(store)
+            .padding(.all, 24)
     }
 }
