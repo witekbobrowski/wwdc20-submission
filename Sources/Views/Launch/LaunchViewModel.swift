@@ -26,13 +26,3 @@ final class LaunchViewModel: ObservableObject {
     }
     
 }
-
-//extension LaunchViewModel: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-//
-//
-//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-//        let newImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
-//        imageView.image = newImage
-//        dismiss(animated: true, completion: nil)
-//    }
-//}

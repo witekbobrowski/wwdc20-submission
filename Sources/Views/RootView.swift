@@ -8,12 +8,12 @@
 
 import SwiftUI
 
-struct RootView: View {
+public struct RootView: View {
     
-    @EnvironmentObject var router: Router
-    @EnvironmentObject var store: Store
+    @ObservedObject private var router = Router()
+    @ObservedObject private var store = Store()
     
-    var body: some View {
+    public var body: some View {
         ZStack {
             if router.current == .launch {
                 LaunchView(viewModel: LaunchViewModel(store: store))
@@ -43,6 +43,8 @@ struct RootView: View {
                     .transition(.move(edge: .bottom))
             }
         }.animation(.easeInOut(duration: 0.3))
+            .environmentObject(router)
+            .environmentObject(store)
     }
     
 }

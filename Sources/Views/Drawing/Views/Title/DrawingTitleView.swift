@@ -25,7 +25,7 @@ struct DrawingTitleView: View {
                 .bold()
                 .multilineTextAlignment(.center)
                 .frame(width: 300, alignment: .center)
-        }
+        }.foregroundColor(Style.Color.black)
     }
 }
 

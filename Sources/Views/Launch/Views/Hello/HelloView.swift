@@ -50,6 +50,7 @@ extension HelloView {
     private var input: some View {
         TextField(viewModel.placeholder, text: $viewModel.name)
             .font(Style.Font.chalk(style: .largeTitle))
+            .foregroundColor(Style.Color.black)
             .scaledToFit()
             .minimumScaleFactor(0.5)
             .lineLimit(1)
