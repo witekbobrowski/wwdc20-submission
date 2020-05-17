@@ -17,6 +17,9 @@ final class ProfileViewModel {
     var avatar: UIImage? { store.user.avatar }
     var name: String { store.user.name }
     
+    var historyTitle: String { "History" }
+    var history: HistoryViewModel { HistoryViewModel(store: store) }
+    
     init(store: Store) {
         self.store = store
     }

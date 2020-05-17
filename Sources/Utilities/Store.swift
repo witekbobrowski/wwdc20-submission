@@ -40,6 +40,8 @@ extension Store {
     static var mock: Store {
         let store = Store()
         store.save(.mock)
+        store.save(EmotionsLog(timestamp: Date(), emotions: [.anger: 1]))
+        store.save(Drawing(timestamp: Date().addingTimeInterval(-360), emotion: .anger, strokes: []))
         return store
     }
 }

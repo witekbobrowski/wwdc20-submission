@@ -14,11 +14,25 @@ enum Style {
         
         static let black = SwiftUI.Color(white: 0.2)
         static let lightGray = SwiftUI.Color(white: 0.9)
+        static let gray = SwiftUI.Color(white: 0.5)
         
         static let purple = SwiftUI.Color(red: 230/255, green: 207/255, blue: 230/255)
         static let green = SwiftUI.Color(red: 162/255, green: 195/255, blue: 182/255)
         static let red = SwiftUI.Color(red: 239/255, green: 185/255, blue: 164/255)
         static let blue = SwiftUI.Color(red: 75/255, green: 76/255, blue: 164/255)
+        
+        static func accentColor(for exercise: Exercise) -> SwiftUI.Color {
+            switch exercise {
+            case .emotions:
+                return purple
+            case .drawing:
+                return green
+            case .affirmations:
+                return red
+            case .gratitude:
+                return blue
+            }
+        }
     }
     enum Font {
         static func font(size: CGFloat) -> SwiftUI.Font {

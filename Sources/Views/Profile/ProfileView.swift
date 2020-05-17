@@ -16,8 +16,9 @@ struct ProfileView: View {
         VStack(alignment: .center, spacing: 0) {
             HeaderView(title: "Your Profile")
             ScrollView(.vertical, showsIndicators: true) {
-                VStack {
+                VStack(spacing: 12) {
                     profile
+                    history
                 }.padding(.top, 24)
             }
             Spacer()
@@ -57,6 +58,16 @@ extension ProfileView {
             .foregroundColor(.white)
             .padding(.all, 12)
             .background(Style.Color.lightGray)
+    }
+    private var history: some View {
+        VStack(spacing: 12) {
+            Text(viewModel.historyTitle)
+                .font(Style.Font.font(style: .headline))
+                .foregroundColor(Style.Color.black)
+                .kerning(0.5)
+                .multilineTextAlignment(.center)
+            HistoryView(viewModel: viewModel.history)
+        }
     }
 }
 

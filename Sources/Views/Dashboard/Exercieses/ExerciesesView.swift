@@ -28,21 +28,8 @@ struct ExercisesView: View {
     private func card(for exercise: Exercise) -> some View {
         MenuCardView(
             viewModel: viewModel.card(for: exercise),
-            accentColor: accentColor(for: exercise)
+            accentColor: Style.Color.accentColor(for: exercise)
         ).frame(minWidth: 0, maxWidth: .infinity)
-    }
-
-    private func accentColor(for exercise: Exercise) -> Color {
-        switch exercise {
-        case .emotions:
-            return Style.Color.purple
-        case .drawing:
-            return Style.Color.green
-        case .affirmations:
-            return Style.Color.red
-        case .gratitude:
-            return Style.Color.blue
-        }
     }
 
 }
