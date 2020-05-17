@@ -22,6 +22,7 @@ struct ProfileView: View {
                 }.padding(.top, 24)
             }
             Spacer()
+            AboutView().padding(.bottom, 12)
             FooterView()
         }.fill().padding(Style.Insets.base).background(Style.Color.background)
     }
