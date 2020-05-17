@@ -39,16 +39,17 @@ extension HeaderView {
     }
     private var profile: some View {
         Button(action: { self.router.current = .profile }) {
-            Group {
-                if store.user.avatar == nil {
+            ZStack {
+//                if store.user.avatar == nil {
                     placeholder
-                } else {
+//                } else {
                     avatar
-                }
+//                }
             }
                 .clipShape(Circle())
                 .shadow(color: Style.Color.lightGray, radius: 4)
-        }.frame(width: 64, height: 64, alignment: .center)
+                .frame(width: 64, height: 64, alignment: .center)
+        }
     }
     private var close: some View {
         Button(action: { self.router.current = .dashboard() }) {
@@ -68,9 +69,8 @@ extension HeaderView {
     private var avatar: some View {
         store.user.avatar.map { avatar in
             Text(avatar)
-                .font(.system(size: 48))
-                .foregroundColor(.white)
-                .padding(.all, 8)
+                .font(.system(size: 40))
+                .frame(width: 64, height: 64, alignment: .center)
                 .background(Style.Color.lightGray)
         }
     }

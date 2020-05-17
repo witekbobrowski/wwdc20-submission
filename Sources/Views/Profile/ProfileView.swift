@@ -33,7 +33,7 @@ struct ProfileView: View {
 extension ProfileView {
     private var profile: some View {
         VStack {
-            Group {
+            ZStack(alignment: .center) {
                 if viewModel.avatar == nil { placeholder } else { avatar }
             }
                 .clipShape(Circle())
@@ -50,14 +50,14 @@ extension ProfileView {
         Image(systemName: "person.fill")
             .resizable()
             .foregroundColor(.white)
-            .padding(.all, 16)
+            .padding(.all, 32)
             .background(Style.Color.black)
     }
     private var avatar: some View {
         viewModel.avatar.map { avatar in
             Text(avatar)
                 .font(.system(size: 64))
-                .padding(.all, 32)
+                .frame(width: 128, height: 128, alignment: .center)
                 .background(Style.Color.lightGray)
         }
     }
