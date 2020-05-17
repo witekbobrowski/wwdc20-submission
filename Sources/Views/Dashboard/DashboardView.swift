@@ -14,7 +14,7 @@ struct DashboardView: View  {
 
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
-            HeaderView(title: self.viewModel.title)
+            HeaderView(title: self.viewModel.title, showsCloseButton: false)
             Spacer()
             ExercisesView(viewModel: self.viewModel.exercises)
                 .frame(maxWidth: 800)

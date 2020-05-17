@@ -11,6 +11,7 @@ import SwiftUI
 struct HeaderView: View  {
     
     @State var title: String
+    @State var showsCloseButton: Bool = true
     @EnvironmentObject var router: Router
     @EnvironmentObject var store: Store
     
@@ -19,7 +20,7 @@ struct HeaderView: View  {
             HStack {
                 if router.current == .dashboard() { profile }
                 Spacer()
-                if router.current != .dashboard() { close }
+                if showsCloseButton { close }
             }
             text
         }.fillHorizontally()
@@ -76,7 +77,7 @@ extension HeaderView {
 struct HeaderView_Previews: PreviewProvider {
     static var previews: some View {
         let store: Store = .mock
-        return HeaderView(title: "Hello, \(store.user.name)!")
+        return HeaderView(title: "Hello, \(store.user.name)!", showsCloseButton: true)
             .environmentObject(Router(initial: .dashboard()))
             .environmentObject(store)
             .padding(.all, 24)
