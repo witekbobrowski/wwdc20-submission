@@ -34,7 +34,7 @@ struct DrawingView: View {
     
     init(viewModel: DrawingViewModel) {
         self.viewModel = viewModel
-        self.emotion = viewModel.builder.emotion!
+        self.emotion = viewModel.builder.emotion ?? .fear
         self.strokes = viewModel.builder.strokes
         self.color = Style.Color.black
     }

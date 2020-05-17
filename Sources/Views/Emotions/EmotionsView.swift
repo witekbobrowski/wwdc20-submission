@@ -33,6 +33,7 @@ extension EmotionsView {
             .aspectRatio(1, contentMode: .fit)
             .rotationEffect(rotation, anchor: .center)
             .animation(.easeInOut)
+            .padding([.leading, .trailing], 64)
     }
     private var controls: some View {
         ZStack {

@@ -19,15 +19,7 @@ struct LaunchView: View {
             PhotoView().frame(width: 200)
             HelloView().frame(width: 400)
             Spacer()
-            Button(action: begin) {
-                Text("Begin")
-                    .font(Style.Font.font(style: .title))
-                    .foregroundColor(.white)
-                    .bold()
-                    .padding(EdgeInsets(top: 12, leading: 32, bottom: 12, trailing: 32))
-                    .background(Style.Color.black)
-                    .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-            }
+            beginButton
         }.fill().padding(Style.Insets.base).background(Style.Color.background)
     }
     
@@ -35,6 +27,21 @@ struct LaunchView: View {
         router.current = .dashboard()
     }
 
+}
+
+// MARK: - Subviews
+extension LaunchView {
+    private var beginButton: some View {
+        Button(action: begin) {
+            Text("Begin")
+                .font(Style.Font.font(style: .title))
+                .foregroundColor(.white)
+                .bold()
+                .padding(EdgeInsets(top: 12, leading: 32, bottom: 12, trailing: 32))
+                .background(Style.Color.black)
+                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+        }
+    }
 }
 
 struct LaunchView_Previews: PreviewProvider {
