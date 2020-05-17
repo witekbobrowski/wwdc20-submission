@@ -23,7 +23,7 @@ struct AboutView: View {
                 .minimumScaleFactor(0.5)
                 .lineLimit(1)
                 .offset(CGSize(width: 0, height: 8))
-            Image("avatar")
+            Image(uiImage: UIImage(named: "avatar.png")!)
                 .resizable()
                 .foregroundColor(.white)
                 .aspectRatio(1, contentMode: .fit)
