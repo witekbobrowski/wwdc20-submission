@@ -16,6 +16,15 @@ final class MenuCardViewModel {
     var title: String { exercise.title }
     var subtitle: String { exercise.shortDescription }
     
+    var path: Router.ExercisePath {
+        switch exercise {
+        case .emotions: return .emotions()
+        case .drawing: return .drawing()
+        case .affirmations: return .affirmations()
+        case .gratitude: return .gratitude()
+        }
+    }
+    
     init(exercise: Exercise = .emotions) {
         self.exercise = exercise
     }

@@ -23,4 +23,4 @@ final class EmotionsBuilder {
     }
 }
 
-
+extension EmotionsLog: Equatable {}

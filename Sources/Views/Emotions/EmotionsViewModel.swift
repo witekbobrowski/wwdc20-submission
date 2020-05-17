@@ -16,6 +16,12 @@ final class EmotionsViewModel: ObservableObject {
     @Published private var emotions = [Emotion: Int]()
     
     var title: String { Exercise.emotions.title.capitalized }
+    var question: String {
+        "What emotions did I experience today?"
+    }
+    var disclosure: String {
+        "ⓘ Number of colored trapezoids represents strenght of the emotion."
+    }
     var pickerViewModel: EmotionsPickerViewModel {
         EmotionsPickerViewModel(builder: builder)
     }

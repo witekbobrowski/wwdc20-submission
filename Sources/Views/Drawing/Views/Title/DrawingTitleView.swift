@@ -25,7 +25,12 @@ struct DrawingTitleView: View {
                 .bold()
                 .multilineTextAlignment(.center)
                 .frame(width: 300, alignment: .center)
+                .animation(.none)
         }.foregroundColor(Style.Color.black)
+            .padding()
+            .background(Style.Color.accentColor(for: .drawing))
+            .clipShape(RoundedRectangle(cornerRadius: 8))
+            .shadow(color: Style.Color.lightGray, radius: 2)
     }
 }
 

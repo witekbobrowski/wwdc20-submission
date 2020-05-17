@@ -31,3 +31,6 @@ final class GratitudeBuilder {
         )
     }
 }
+
+
+extension Gratitude: Equatable {}

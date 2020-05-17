@@ -13,8 +13,15 @@ class Router: ObservableObject {
     enum Path: Equatable {
         case launch
         indirect case dashboard(Path? = nil)
-        case exercise(Exercise)
+        case exercise(ExercisePath)
         case profile
+    }
+    
+    enum ExercisePath: Equatable {
+        case emotions(EmotionsLog? = nil)
+        case drawing(Drawing? = nil)
+        case affirmations(String? = nil)
+        case gratitude(Gratitude? = nil)
     }
     
     @Published var current: Path

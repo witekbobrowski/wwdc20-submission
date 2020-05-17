@@ -10,6 +10,8 @@ import SwiftUI
 
 struct EmotionsView: View {
     
+    @EnvironmentObject private var router: Router
+    
     var viewModel: EmotionsViewModel
     @State var rotation: Angle = .zero
     
@@ -17,17 +19,38 @@ struct EmotionsView: View {
         VStack(spacing: 0) {
             HeaderView(title: viewModel.title)
             Spacer()
+            question
             picker
             Spacer()
             controls
             FooterView()
         }.fill().padding(Style.Insets.base).background(Style.Color.background)
     }
-    
+
 }
 
 // MARK: - Subviews
 extension EmotionsView {
+    private var question: some View {
+        VStack {
+            Text(viewModel.question)
+                .font(Style.Font.chalk(size: 23))
+                .foregroundColor(Style.Color.black)
+                .bold()
+                .multilineTextAlignment(.center)
+                .padding()
+                .background(Style.Color.accentColor(for: .emotions))
+                .clipShape(RoundedRectangle(cornerRadius: 8))
+                .shadow(color: Style.Color.lightGray, radius: 2)
+                .padding(.bottom, 16)
+            Text(viewModel.disclosure)
+                .font(Style.Font.font(size: 16))
+                .foregroundColor(Style.Color.black)
+                .bold()
+                .multilineTextAlignment(.center)
+                .padding(.bottom, 16)
+        }
+    }
     private var picker: some View {
         EmotionsPickerView(viewModel: viewModel.pickerViewModel)
             .aspectRatio(1, contentMode: .fit)
@@ -43,8 +66,11 @@ extension EmotionsView {
                 )
                 Spacer()
             }
-            Button(action: viewModel.save) {
-                Text(Strings.continue)
+            Button(action: {
+                self.viewModel.save()
+                self.router.current = .dashboard()
+            }) {
+                Text(Strings.save)
                     .font(Style.Font.font(style: .headline))
                     .foregroundColor(.white)
                     .bold()

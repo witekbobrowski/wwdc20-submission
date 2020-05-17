@@ -15,7 +15,7 @@ struct MenuCardView: View  {
     @EnvironmentObject private var router: Router
     
     var body: some View {
-        Button(action: { self.router.current = .dashboard(.exercise(self.viewModel.exercise)) }) {
+        Button(action: { self.router.current = .dashboard(.exercise(self.viewModel.path)) }) {
             VStack(alignment: .center, spacing: 8) {
                 Text(viewModel.icon)
                     .font(.system(size: 64))

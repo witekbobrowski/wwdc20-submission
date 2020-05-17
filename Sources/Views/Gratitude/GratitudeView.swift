@@ -10,6 +10,8 @@ import SwiftUI
 
 struct GratitudeView: View {
     
+    @EnvironmentObject private var router: Router
+    
     @ObservedObject var viewModel: GratitudeViewModel
     
     var body: some View {
@@ -62,8 +64,11 @@ extension GratitudeView {
     }
     private var controls: some View {
         ZStack {
-            Button(action: viewModel.save) {
-                Text(Strings.continue)
+            Button(action: {
+                self.viewModel.save()
+                self.router.current = .dashboard()
+            }) {
+                Text(Strings.save)
                     .font(Style.Font.font(style: .headline))
                     .foregroundColor(.white)
                     .bold()

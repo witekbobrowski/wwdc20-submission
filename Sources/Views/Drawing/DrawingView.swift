@@ -10,6 +10,8 @@ import SwiftUI
 
 struct DrawingView: View {
     
+    @EnvironmentObject private var router: Router
+    
     @ObservedObject var viewModel: DrawingViewModel
     
     @State var color: Color = .black
@@ -48,8 +50,11 @@ extension DrawingView {
                         .font(Style.Font.font(style: .footnote))
                 }.foregroundColor(Color(white: 0.2)).padding(.trailing, 12)
             }
-            Button(action: viewModel.save) {
-                Text(Strings.continue)
+            Button(action: {
+                self.viewModel.save()
+                self.router.current = .dashboard()
+            }) {
+                Text(Strings.save)
                     .font(Style.Font.font(style: .headline))
                     .foregroundColor(.white)
                     .bold()

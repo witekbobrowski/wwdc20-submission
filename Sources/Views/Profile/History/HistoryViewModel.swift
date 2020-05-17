@@ -66,6 +66,19 @@ final class HistoryViewModel {
         return items.joined(separator: " · ")
     }
     
+    func path(for item: Item) -> Router.Path {
+        switch item {
+        case .emotions(let emotions):
+            return .dashboard(.exercise(.emotions(emotions)))
+        case .drawing(let drawing):
+            return .dashboard(.exercise(.drawing(drawing)))
+        case .affirmations(let affirmations):
+            return .dashboard(.exercise(.affirmations(affirmations)))
+        case .gratitude(let gratitude):
+            return .dashboard(.exercise(.gratitude(gratitude)))
+        }
+    }
+    
     private func buildItems() -> [Item] {
         var items = [Item]()
         items.append(contentsOf: store.emotions.map { .emotions($0) })

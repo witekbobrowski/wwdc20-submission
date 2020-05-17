@@ -10,6 +10,8 @@ import SwiftUI
 
 struct HistoryView: View {
     
+    @EnvironmentObject private var router: Router
+    
     var viewModel: HistoryViewModel
     
     var body: some View {
@@ -20,28 +22,31 @@ struct HistoryView: View {
     
     private func row(forItemAt index: Int) -> some View {
         let item = viewModel.items[index]
-        return HStack(spacing: 0) {
-            Text(viewModel.icon(for: item))
-                .padding(.all, 12)
-                .frame(width: 48, height: 48, alignment: .center)
-            VStack(alignment: .leading) {
-                Text(viewModel.title(for: item))
-                    .font(Style.Font.font(style: .headline))
-                    .bold()
-                    .multilineTextAlignment(.leading)
-                    .foregroundColor(Style.Color.black)
-                Text(viewModel.subtitle(for: item))
-                    .font(Style.Font.font(style: .footnote))
-                    .bold()
-                    .multilineTextAlignment(.leading)
-                    .foregroundColor(Style.Color.gray)
-            }
-            Spacer()
-        }.frame(width: 300, height: 50)
-            .background(Style.Color.accentColor(for: item.exercise))
-            .clipShape(RoundedRectangle(cornerRadius: 8))
-            .shadow(color: Style.Color.lightGray, radius: 2)
+        return Button(action: { self.router.current = self.viewModel.path(for: item) }) {
+            HStack(spacing: 0) {
+                Text(viewModel.icon(for: item))
+                    .padding(.all, 12)
+                    .frame(width: 48, height: 48, alignment: .center)
+                VStack(alignment: .leading) {
+                    Text(viewModel.title(for: item))
+                        .font(Style.Font.font(style: .headline))
+                        .bold()
+                        .multilineTextAlignment(.leading)
+                        .foregroundColor(Style.Color.black)
+                    Text(viewModel.subtitle(for: item))
+                        .font(Style.Font.font(style: .footnote))
+                        .bold()
+                        .multilineTextAlignment(.leading)
+                        .foregroundColor(Style.Color.gray)
+                }
+                Spacer()
+            }.frame(width: 300, height: 50)
+                .background(Style.Color.accentColor(for: item.exercise))
+                .clipShape(RoundedRectangle(cornerRadius: 8))
+                .shadow(color: Style.Color.lightGray, radius: 2)
+        }
     }
+    
 }
 
 // MARK: - Subviews

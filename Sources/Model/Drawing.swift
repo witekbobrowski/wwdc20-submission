@@ -30,6 +30,8 @@ final class DrawingBuilder {
     }
 }
 
+extension Drawing: Equatable {}
+
 extension CGPoint: Hashable {
     public func hash(into hasher: inout Hasher) {
         hasher.combine(x)
