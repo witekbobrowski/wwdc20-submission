@@ -10,6 +10,19 @@ import Foundation
 
 final class GratitudeViewModel {
     
+    let builder: GratitudeBuilder
+    
     var title: String { Exercise.gratitude.title.capitalized }
+    
+    var personQuestion: String { "I am greatful to" }
+    var personPlaceholder: String { "my mom..." }
+    var reasonQuestion: String { "for" }
+    var reasonPlaceholder: String { "always..." }
+    var actionQuestion: String { "and I will show it by" }
+    var actionPlaceholder: String { "letting her know that..." }
+    
+    init(builder: GratitudeBuilder = GratitudeBuilder()) {
+        self.builder = builder
+    }
     
 }
