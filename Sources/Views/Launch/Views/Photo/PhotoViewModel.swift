@@ -23,9 +23,3 @@ final class PhotoViewModel: ObservableObject {
     }
     
 }
-
-extension PhotoViewModel: ImagePickerDelegate {
-    func imagePickerDidSelect(_ image: UIImage?) {
-        self.image = image
-    }
-}

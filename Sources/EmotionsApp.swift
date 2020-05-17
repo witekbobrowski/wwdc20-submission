@@ -9,40 +9,11 @@
 import UIKit
 import SwiftUI
 
-protocol ImagePickerDelegate: class {
-    func imagePickerDidSelect(_ image: UIImage?)
-}
-
 public class EmotionsApp: UIHostingController<RootView> {
-    
-    weak var pickerDelegate: ImagePickerDelegate?
-    
     convenience init() {
         let root = RootView()
         self.init(rootView: root)
         view.backgroundColor = Style.Color.background.uiColor
-    }
-    
-    func presentCamera() {
-        let picker = UIImagePickerController()
-        picker.sourceType = .camera
-        picker.cameraCaptureMode = .photo
-        picker.modalPresentationStyle = .fullScreen
-        present(picker, animated: true, completion: nil)
-    }
-    
-}
-
-extension EmotionsApp: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    public func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true, completion: nil)
-    }
-    public func imagePickerController(
-        _ picker: UIImagePickerController,
-        didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]
-    ) {
-        pickerDelegate?.imagePickerDidSelect(info[.originalImage] as? UIImage)
-        dismiss(animated: true, completion: nil)
     }
 }
 
