@@ -15,6 +15,7 @@ class Router: ObservableObject {
         indirect case dashboard(Path? = nil)
         case exercise(ExercisePath)
         case profile
+        case knowledge
     }
     
     enum ExercisePath: Equatable {

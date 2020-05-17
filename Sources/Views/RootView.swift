@@ -49,8 +49,14 @@ public struct RootView: View {
                 }
                 
             } else if router.current == .profile {
-                ProfileView(viewModel: ProfileViewModel(store: store))
-                    .transition(.move(edge: .bottom))
+                ProfileView(
+                    viewModel: ProfileViewModel(store: store)
+                ).transition(.move(edge: .bottom))
+                
+            } else if router.current == .knowledge {
+                KnowledgeView(
+                    viewModel: KnowledgeViewModel()
+                ).transition(.move(edge: .bottom))
             }
         }.animation(.easeInOut(duration: 0.3))
             .environmentObject(router)

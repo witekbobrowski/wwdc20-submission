@@ -12,6 +12,7 @@ struct HeaderView: View  {
     
     @State var title: String
     @State var showsCloseButton: Bool = true
+
     @EnvironmentObject var router: Router
     @EnvironmentObject var store: Store
     
@@ -20,6 +21,7 @@ struct HeaderView: View  {
             HStack {
                 if router.current == .dashboard() { profile }
                 Spacer()
+                if router.current == .dashboard() { knowledge }
                 if showsCloseButton { close }
             }
             text
@@ -44,29 +46,45 @@ extension HeaderView {
             }
                 .clipShape(Circle())
                 .shadow(color: Style.Color.lightGray, radius: 4)
-                .frame(width: 64, height: 64, alignment: .center)
+        }
+    }
+    private var knowledge: some View {
+        Button(action: { self.router.current = .knowledge }) {
+            Image(systemName: "info.circle")
+                .resizable()
+                .padding(.all, 13)
+                .foregroundColor(Style.Color.black)
+                .frame(width: 50, height: 50, alignment: .center)
+                .background(Style.Color.lightGray)
+                .clipShape(Circle())
+                .shadow(color: Style.Color.lightGray, radius: 4)
         }
     }
     private var close: some View {
         Button(action: { self.router.current = .dashboard() }) {
             Image(systemName: "xmark")
                 .resizable()
+                .padding(.all, 15)
                 .foregroundColor(Style.Color.black)
-                .frame(width: 24, height: 24, alignment: .center)
+                .frame(width: 50, height: 50, alignment: .center)
+                .background(Style.Color.lightGray)
+                .clipShape(Circle())
+                .shadow(color: Style.Color.lightGray, radius: 4)
         }
     }
     private var placeholder: some View {
         Image(systemName: "person.fill")
             .resizable()
-            .foregroundColor(.white)
-            .padding(.all, 16)
-            .background(Style.Color.black)
+            .foregroundColor(Style.Color.black)
+            .padding(.all, 15)
+            .background(Style.Color.lightGray)
+            .frame(width: 50, height: 50, alignment: .center)
     }
     private var avatar: some View {
         store.user.avatar.map { avatar in
             Text(avatar)
-                .font(.system(size: 40))
-                .frame(width: 64, height: 64, alignment: .center)
+                .font(.system(size: 30))
+                .frame(width: 50, height: 50, alignment: .center)
                 .background(Style.Color.lightGray)
         }
     }

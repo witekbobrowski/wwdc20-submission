@@ -14,7 +14,7 @@ struct ProfileView: View {
     
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
-            HeaderView(title: "Your Profile")
+            HeaderView(title: viewModel.title)
             profile.padding(.top, 24).padding(.bottom, 12)
             if !viewModel.history.items.isEmpty {
                 historyTitle.padding(.bottom, 12)
@@ -22,7 +22,6 @@ struct ProfileView: View {
             ScrollView(.vertical, showsIndicators: false) {
                 HistoryView(viewModel: viewModel.history)
             }
-            AboutView().padding(.bottom, 12)
             FooterView()
         }.fill().padding(Style.Insets.base).background(Style.Color.background)
     }
