@@ -10,9 +10,11 @@ import SwiftUI
 
 struct PhotoView: View {
     
+    @ObservedObject var viewModel: PhotoViewModel
+    
     var body: some View {
         ZStack(alignment: .center) {
-            avatar
+            if viewModel.image == nil { placeholder } else { avatar }
             GeometryReader { geometry in
                 HStack {
                     Spacer()
@@ -31,12 +33,13 @@ struct PhotoView: View {
             }
         }.aspectRatio(1, contentMode: .fit)
     }
+
 }
 
 // MARK: - Subviews
 extension PhotoView {
     private var placeholder: some View {
-        Image(systemName: "person.fill")
+        Image(systemName: viewModel.placeholder)
             .resizable()
             .foregroundColor(.white)
             .padding(.all, 64)
@@ -45,17 +48,19 @@ extension PhotoView {
             .shadow(color: Style.Color.lightGray, radius: 24)
     }
     private var avatar: some View {
-        Image("avatar")
-            .resizable()
-            .foregroundColor(.white)
-            .padding(.all, 24)
-            .background(Style.Color.lightGray)
-            .clipShape(Circle())
-            .shadow(color: Style.Color.lightGray, radius: 24)
-    }
+        Group {
+            viewModel.image.map { image in
+                Image(uiImage: image)
+                    .resizable()
+                    .background(Style.Color.lightGray)
+                    .clipShape(Circle())
+                    .shadow(color: Style.Color.lightGray, radius: 24)
+                }
+            }
+        }
     private var camera: some View {
         Button(action: {}) {
-            Image(systemName: "camera.fill")
+            Image(systemName: viewModel.camera)
                 .resizable()
                 .scaledToFit()
                 .foregroundColor(Style.Color.black)
@@ -65,6 +70,6 @@ extension PhotoView {
 
 struct PhotoView_Previews: PreviewProvider {
     static var previews: some View {
-        PhotoView().frame(width: 200)
+        PhotoView(viewModel: PhotoViewModel()).frame(width: 200)
     }
 }

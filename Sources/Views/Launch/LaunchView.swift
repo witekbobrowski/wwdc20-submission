@@ -16,7 +16,7 @@ struct LaunchView: View {
     var body: some View {
         VStack(alignment: .center, spacing: 32) {
             Spacer()
-            PhotoView().frame(width: 200)
+            PhotoView(viewModel: viewModel.photo).frame(width: 200)
             HelloView(viewModel: viewModel.hello).frame(width: 400)
             Spacer()
             beginButton
