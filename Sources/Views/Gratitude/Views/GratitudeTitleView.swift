@@ -11,7 +11,7 @@ import SwiftUI
 struct GratitudeTitleView: View {
     var body: some View {
         VStack {
-            Text("Today I am greatuful for what I have")
+            Text("Today I am grateful for what I have")
                 .font(Style.Font.chalk(size: 23))
                 .bold()
                 .multilineTextAlignment(.center)
