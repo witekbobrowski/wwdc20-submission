@@ -37,7 +37,7 @@ struct HistoryView: View {
                         .font(Style.Font.font(style: .footnote))
                         .bold()
                         .multilineTextAlignment(.leading)
-                        .foregroundColor(Style.Color.gray)
+                        .foregroundColor(Style.Color.black)
                 }
                 Spacer()
             }.frame(width: 300, height: 50)

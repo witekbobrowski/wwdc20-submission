@@ -13,7 +13,7 @@ final class MenuCardViewModel {
     let exercise: Exercise
     
     var icon: String { exercise.icon }
-    var title: String { exercise.title }
+    var title: String { exercise.title.capitalized }
     var subtitle: String { exercise.shortDescription }
     
     var path: Router.ExercisePath {
