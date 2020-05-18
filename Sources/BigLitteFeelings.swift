@@ -9,7 +9,7 @@
 import UIKit
 import SwiftUI
 
-public class EmotionsApp: UIHostingController<RootView> {
+public class BigLitteFeelings: UIHostingController<RootView> {
     convenience init() {
         let root = RootView()
         self.init(rootView: root)
