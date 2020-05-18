@@ -21,6 +21,10 @@ enum Emotion: String, CaseIterable {
     case fear
 }
 
+extension Emotion: Identifiable {
+    var id: String { rawValue }
+}
+
 extension Emotion {
     static var random: Emotion { Self.allCases.randomElement()! }
     var emoji: String {

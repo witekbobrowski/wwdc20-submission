@@ -15,6 +15,7 @@ struct KnowledgeView: View {
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
             HeaderView(title: viewModel.title)
+            LogoView(fontSize: 40)
             Spacer()
             AboutView().padding(.bottom, 12)
             FooterView()

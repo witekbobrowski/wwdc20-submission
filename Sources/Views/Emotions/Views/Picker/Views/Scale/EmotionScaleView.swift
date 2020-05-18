@@ -14,6 +14,7 @@ struct EmotionScaleView: View {
     private let spacing: CGFloat = 4
 
     @State private var hoveringOver: Int?
+    @State private var details: EmotionDetailsViewModel?
     
     @ObservedObject var viewModel: EmotionScaleViewModel
     
@@ -22,7 +23,7 @@ struct EmotionScaleView: View {
             ZStack(alignment: .trailing) {
                 HStack {
                     Group {
-                        Button(action: {}) {
+                        Button(action: { self.details = self.viewModel.details }) {
                             Text(self.viewModel.title)
                                 .font(Style.Font.font(size: 18))
                                 .foregroundColor(Color(white: 0.2))
@@ -44,6 +45,8 @@ struct EmotionScaleView: View {
                 }
                 .frame(size: self.boundingBox(geometry.size))
             }
+        }.sheet(item: self.$details) { _ in
+            EmotionDetailsView(viewModel: self.$details)
         }
     }
     
