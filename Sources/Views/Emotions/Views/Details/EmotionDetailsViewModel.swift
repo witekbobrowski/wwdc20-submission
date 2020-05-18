@@ -13,7 +13,7 @@ final class EmotionDetailsViewModel {
     private let emotion: Emotion
     
     var title: String { emotion.emoji + " " + emotion.rawValue.capitalized }
-    var description: String { "emotion.emoji + asda + emotion.rawValue.capitalized" }
+    var description: String { emotion.description }
     
     init(emotion: Emotion) {
         self.emotion = emotion

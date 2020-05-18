@@ -15,7 +15,10 @@ struct EmotionDetailsView: View {
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
             close
-            Spacer()
+            title
+            Spacer(minLength: 12)
+            description.padding([.leading,  .trailing], 64)
+            Spacer(minLength: 12)
             FooterView()
         }.fill().padding(Style.Insets.base).background(Style.Color.background)
     }
@@ -37,6 +40,20 @@ extension EmotionDetailsView {
                     .shadow(color: Style.Color.lightGray, radius: 4)
             }
         }.fillHorizontally()
+    }
+    private var title: some View {
+        Text(viewModel?.title ?? "")
+            .font(Style.Font.font(size: 44))
+            .foregroundColor(Style.Color.black)
+            .kerning(0.5)
+            .multilineTextAlignment(.center)
+    }
+    private var description: some View {
+        Text(viewModel?.description ?? "")
+            .font(Style.Font.font(style: .title))
+            .foregroundColor(Style.Color.black)
+            .multilineTextAlignment(.center)
+            .minimumScaleFactor(0.5)
     }
 }
 
