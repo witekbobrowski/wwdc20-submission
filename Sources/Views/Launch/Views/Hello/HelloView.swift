@@ -48,13 +48,17 @@ extension HelloView {
         .background(Style.Color.black)
     }
     private var input: some View {
-        TextField(viewModel.placeholder, text: $viewModel.name)
+        CustomTextField(
+            placeholder: Text(viewModel.placeholder).foregroundColor(Style.Color.gray),
+            text: $viewModel.name
+        )
             .font(Style.Font.chalk(style: .largeTitle))
             .foregroundColor(Style.Color.black)
-            .scaledToFit()
+            .accentColor(Style.Color.black)
             .minimumScaleFactor(0.5)
             .lineLimit(1)
             .multilineTextAlignment(.center)
+            .fillHorizontally()
             .frame(minHeight: 120)
             .padding([.leading, .trailing], 12)
     }

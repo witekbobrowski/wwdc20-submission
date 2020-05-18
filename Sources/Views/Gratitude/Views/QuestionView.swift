@@ -18,10 +18,17 @@ struct QuestionView: View {
         VStack(alignment: .center, spacing: 12) {
             Text(title)
                 .font(Style.Font.font(style: .largeTitle))
+                .foregroundColor(Style.Color.black)
                 .bold()
                 .multilineTextAlignment(.center)
-            TextField(placeholder, text: $answer)
+                .frame(height: 40, alignment: .center)
+            CustomTextField(
+                placeholder: Text(placeholder).foregroundColor(Style.Color.gray),
+                text: $answer
+            )
                 .font(Style.Font.chalk(style: .largeTitle))
+                .foregroundColor(Style.Color.black)
+                .accentColor(Style.Color.black)
                 .minimumScaleFactor(0.5)
                 .lineLimit(1)
                 .multilineTextAlignment(.center)

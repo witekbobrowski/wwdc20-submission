@@ -15,6 +15,7 @@ struct EmotionDetailsView: View {
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
             close
+            Spacer(minLength: 12)
             title
             Spacer(minLength: 12)
             description.padding([.leading,  .trailing], 64)
