@@ -18,6 +18,10 @@ struct CanvasView: View {
         GeometryReader { geometry in
             Group {
                 ZStack {
+                    Image(uiImage: UIImage(named: "outline.png")!.withRenderingMode(.alwaysTemplate))
+                        .resizable()
+                        .foregroundColor(Color.black)
+                        .padding(.all, 64)
                     ForEach(self.strokes, id: \.self) { stroke in
                         Path { path in
                             self.add(stroke, to: &path)
