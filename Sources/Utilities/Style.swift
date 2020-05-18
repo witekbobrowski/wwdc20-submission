@@ -14,6 +14,7 @@ enum Style {
         
         static let black = SwiftUI.Color(white: 0.2)
         static let lightGray = SwiftUI.Color(white: 0.9)
+        static let lighterGray = SwiftUI.Color(white: 0.95)
         static let gray = SwiftUI.Color(white: 0.5)
         
         static let purple = SwiftUI.Color(red: 230/255, green: 207/255, blue: 230/255)

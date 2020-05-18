@@ -58,7 +58,7 @@ final class HistoryViewModel {
             }
         case .drawing(let drawing):
             items.append(drawing.emotion.rawValue.capitalized)
-        case .affirmations(let affirmations):
+        case .affirmations:
             break
         case .gratitude(let gratitude):
             gratitude.person.map { items.append($0) }
@@ -96,7 +96,7 @@ extension HistoryViewModel.Item {
             return emotions.timestamp
         case .drawing(let drawing):
             return drawing.timestamp
-        case .affirmations(let affirmations):
+        case .affirmations:
             return Date()
         case .gratitude(let gratitude):
             return gratitude.timestamp
