@@ -27,7 +27,7 @@ struct DrawingTitleView: View {
                 .frame(width: 300, alignment: .center)
                 .animation(.none)
         }.foregroundColor(Style.Color.black)
-            .padding()
+            .padding(EdgeInsets(top: 6, leading: 12, bottom: 6, trailing: 12))
             .background(Style.Color.accentColor(for: .drawing))
             .clipShape(RoundedRectangle(cornerRadius: 8))
             .shadow(color: Style.Color.lightGray, radius: 2)

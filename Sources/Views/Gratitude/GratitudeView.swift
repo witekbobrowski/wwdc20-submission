@@ -17,20 +17,41 @@ struct GratitudeView: View {
     var body: some View {
         VStack(spacing: 0) {
             HeaderView(title: viewModel.title)
+            Spacer(minLength: 12)
+            GratitudeTitleView()
+            Spacer(minLength: 12)
             Spacer()
-            VStack(alignment: .center) {
-                Spacer()
-                personQuestion
-                Spacer()
-                reasonQuestion
-                Spacer()
-                actionQuestion
-                Spacer()
+            ZStack {
+                VStack {
+                    HStack {
+                        Spacer()
+                        Image(systemName: "bookmark.fill")
+                            .resizable()
+                            .foregroundColor(Style.Color.black)
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 40, height: 40, alignment: .center)
+                            .offset(x: 0, y: -4)
+                    }.padding(.trailing, 64)
+                    Spacer()
+                }
+                VStack(alignment: .center) {
+                    Spacer()
+                    personQuestion
+                        .foregroundColor(Style.Color.red)
+                    Spacer()
+                    reasonQuestion
+                        .foregroundColor(Style.Color.green)
+                    Spacer()
+                    actionQuestion
+                        .foregroundColor(Style.Color.blue)
+                    Spacer()
+                }
             }
-                .fill()
-                .aspectRatio(1, contentMode: .fit)
-                .background(Color.white)
-                .padding(EdgeInsets(top: 24, leading: 64, bottom: 24, trailing: 64))
+            .fill()
+            .aspectRatio(1, contentMode: .fit)
+            .background(Color.white)
+            .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+            .padding(EdgeInsets(top: 24, leading: 64, bottom: 24, trailing: 64))
             Spacer()
             controls
             FooterView()

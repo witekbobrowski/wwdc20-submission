@@ -31,7 +31,7 @@ struct EmotionScaleView: View {
                                 .padding(EdgeInsets(top: 4, leading: 8, bottom: 4, trailing: 8))
                         }
                             .rotationEffect(.degrees(-90), anchor: .center)
-                            .frame(width: geometry.size.height)
+                            .frame(width: geometry.size.height + 32)
                     }.frame(width: self.titleWidth)
                     Spacer()
                 }

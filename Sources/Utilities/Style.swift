@@ -19,7 +19,7 @@ enum Style {
         static let purple = SwiftUI.Color(red: 230/255, green: 207/255, blue: 230/255)
         static let green = SwiftUI.Color(red: 162/255, green: 195/255, blue: 182/255)
         static let red = SwiftUI.Color(red: 239/255, green: 185/255, blue: 164/255)
-        static let blue = SwiftUI.Color(red: 75/255, green: 76/255, blue: 164/255)
+        static let blue = SwiftUI.Color(red: 105/255, green: 106/255, blue: 194/255)
         
         static func accentColor(for exercise: Exercise) -> SwiftUI.Color {
             switch exercise {

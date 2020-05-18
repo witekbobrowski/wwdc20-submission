@@ -38,17 +38,16 @@ extension EmotionsView {
                 .foregroundColor(Style.Color.black)
                 .bold()
                 .multilineTextAlignment(.center)
-                .padding()
+                .padding(EdgeInsets(top: 6, leading: 12, bottom: 6, trailing: 12))
                 .background(Style.Color.accentColor(for: .emotions))
                 .clipShape(RoundedRectangle(cornerRadius: 8))
                 .shadow(color: Style.Color.lightGray, radius: 2)
-                .padding(.bottom, 16)
+                .padding(.bottom, 8)
             Text(viewModel.disclosure)
                 .font(Style.Font.font(size: 16))
                 .foregroundColor(Style.Color.black)
                 .bold()
                 .multilineTextAlignment(.center)
-                .padding(.bottom, 16)
         }
     }
     private var picker: some View {

@@ -27,7 +27,6 @@ struct QuestionView: View {
                 text: $answer
             )
                 .font(Style.Font.chalk(style: .largeTitle))
-                .foregroundColor(Style.Color.black)
                 .accentColor(Style.Color.black)
                 .minimumScaleFactor(0.5)
                 .lineLimit(1)
