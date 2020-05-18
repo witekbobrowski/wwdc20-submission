@@ -35,7 +35,7 @@ extension DrawingView {
     private var canvas: some View {
         CanvasView(strokes: $viewModel.strokes, color: $color)
             .aspectRatio(1, contentMode: .fit)
-            .shadow(color: Style.Color.lightGray, radius: 8, x: 0, y: 0)
+            .shadow(color: Style.Color.lightGray, radius: 18, x: 0, y: 0)
     }
     private var controls: some View {
         ZStack {

@@ -43,10 +43,10 @@ extension PhotoView {
     private var placeholder: some View {
         Image(systemName: viewModel.placeholder)
             .resizable()
+            .frame(width: 50, height: 50, alignment: .center)
+            .fill()
             .foregroundColor(.white)
-            .padding(.all, 48)
             .background(Style.Color.black)
-            .clipShape(Circle())
             .shadow(color: Style.Color.lightGray, radius: 24)
     }
     private var avatar: some View {

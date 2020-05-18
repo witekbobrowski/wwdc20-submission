@@ -16,7 +16,7 @@ struct LogoView: View {
         HStack(spacing: 12) {
             Text("Big")
                 .font(Style.Font.chalk(size: fontSize))
-                .foregroundColor(Style.Color.red).underline()
+                .foregroundColor(Style.Color.red)
             Text("Little")
                 .font(Style.Font.chalk(size: fontSize))
                 .foregroundColor(Style.Color.green)
