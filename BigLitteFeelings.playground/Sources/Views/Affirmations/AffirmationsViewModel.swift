@@ -13,7 +13,7 @@ final class AffirmationsViewModel: ObservableObject {
     private let store: Store
     private var affirmations: [String] { [
         "I am able to share what I have with others",
-        "I am special",
+        "I am spacial",
         "I have a good sense of humor",
         "I am important",
         "I can be brave",
