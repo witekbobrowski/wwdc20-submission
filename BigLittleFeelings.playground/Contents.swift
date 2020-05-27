@@ -1,7 +1,7 @@
 import PlaygroundSupport
 import SwiftUI
 
-/// # Big Litte Feelings
+/// # Big Little Feelings
 /// > created by Witek Bobrowski.
 ///
 /// Welcome to my Swift Student Challenge Submission!
@@ -12,7 +12,7 @@ import SwiftUI
 let user = User(name: "Witek", avatar: "👨🏻‍💻")
 
 /// You can pass `nil` here to discard  a user created above
-let app = BigLitteFeelings(user: user)
+let app = BigLittleFeelings(user: user)
 let window = UIWindow(
     frame: CGRect(x: 0, y: 0, width: 760, height: 960)
 )

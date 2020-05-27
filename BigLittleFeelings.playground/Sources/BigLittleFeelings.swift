@@ -1,5 +1,5 @@
 //
-//  EmotionsApp.swift
+//  BigLittleFeelings.swift
 //  Emotions
 //
 //  Created by Witek Bobrowski on 17/05/2020.
@@ -9,7 +9,7 @@
 import UIKit
 import SwiftUI
 
-public class BigLitteFeelings: UIHostingController<RootView> {
+public class BigLittleFeelings: UIHostingController<RootView> {
     public convenience init(user: User? = nil) {
         let root = RootView(user: user)
         self.init(rootView: root)
