@@ -26,7 +26,6 @@ struct PhotoView: View {
                             self.camera
                         }
                             .frame(width: geometry.size.width/4, height: geometry.size.height/4)
-                            .hoverEffect(.lift)
                             .background(Color.white)
                             .clipShape(Circle())
                             .shadow(radius: 8)

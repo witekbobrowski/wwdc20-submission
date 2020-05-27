@@ -9,8 +9,12 @@
 import UIKit
 
 public struct User {
-    let name: String
-    let avatar: String?
+    public let name: String
+    public let avatar: String?
+    public init(name: String, avatar: String?) {
+        self.name = name
+        self.avatar = avatar
+    }
 }
 
 final class UserBuilder {

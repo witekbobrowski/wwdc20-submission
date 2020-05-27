@@ -10,8 +10,8 @@ import UIKit
 import SwiftUI
 
 public class BigLitteFeelings: UIHostingController<RootView> {
-    convenience init() {
-        let root = RootView()
+    public convenience init(user: User? = nil) {
+        let root = RootView(user: user)
         self.init(rootView: root)
         view.backgroundColor = Style.Color.background.uiColor
     }

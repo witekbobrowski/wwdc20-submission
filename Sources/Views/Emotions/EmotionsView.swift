@@ -20,6 +20,7 @@ struct EmotionsView: View {
             HeaderView(title: viewModel.title)
             Spacer()
             question
+            Spacer()
             picker
             Spacer()
             controls
@@ -56,6 +57,7 @@ extension EmotionsView {
             .rotationEffect(rotation, anchor: .center)
             .animation(.easeInOut)
             .padding([.leading, .trailing], 64)
+        .frame(maxHeight: 800)
     }
     private var controls: some View {
         ZStack {

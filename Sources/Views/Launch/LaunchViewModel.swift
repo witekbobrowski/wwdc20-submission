@@ -25,6 +25,8 @@ final class LaunchViewModel: ObservableObject {
     init(builder: UserBuilder = UserBuilder(), store: Store) {
         self.builder = builder
         self.store = store
+        builder.name = store.user.name
+        builder.avatar = store.user.avatar
     }
     
     func save() {

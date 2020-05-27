@@ -54,9 +54,11 @@ struct EmotionScaleView: View {
         Button(action: { self.viewModel.selected = index }) {
             trapezoid(for: index, in: geometry)
                 .foregroundColor(self.color(for: index))
-        }.onHover { isWithinTheFrame in
-            self.hoveringOver = isWithinTheFrame ? index : nil
         }
+        // not available on Swift Playgrounds
+//        .onHover { isWithinTheFrame in
+//            self.hoveringOver = isWithinTheFrame ? index : nil
+//        }
     }
     
     private func trapezoid(for index: Int, in geometry: GeometryProxy) -> some View {

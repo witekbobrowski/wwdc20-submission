@@ -38,17 +38,21 @@ struct GratitudeView: View {
                     Spacer()
                     personQuestion
                         .foregroundColor(Style.Color.red)
+                        .accentColor(Style.Color.red)
                     Spacer()
                     reasonQuestion
                         .foregroundColor(Style.Color.green)
+                        .accentColor(Style.Color.green)
                     Spacer()
                     actionQuestion
                         .foregroundColor(Style.Color.blue)
+                        .accentColor(Style.Color.blue)
                     Spacer()
                 }
             }
             .fill()
             .aspectRatio(1, contentMode: .fit)
+            .frame(maxHeight: 1000)
             .background(Color.white)
             .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
             .padding(EdgeInsets(top: 24, leading: 64, bottom: 24, trailing: 64))

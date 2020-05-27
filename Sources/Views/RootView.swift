@@ -63,6 +63,11 @@ public struct RootView: View {
             .environmentObject(store)
     }
     
+    init(user: User? = nil) {
+        user.map(store.save)
+        router.current = .launch
+    }
+    
     private func exercise(from path: Router.Path?) -> Router.ExercisePath? {
         if case .dashboard(let subpath) = path {
             if case .exercise(let exercise) = subpath { return exercise }
